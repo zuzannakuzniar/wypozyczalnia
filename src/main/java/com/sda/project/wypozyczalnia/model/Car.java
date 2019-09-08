@@ -3,6 +3,9 @@ package com.sda.project.wypozyczalnia.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.websocket.OnMessage;
+import java.util.List;
 
 @Entity
 public class Car {
@@ -14,7 +17,8 @@ public class Car {
     private String model;
     private double engine;
     private double price;
-    private Equipment equipment;
+    @OneToMany
+    private List<Equipment> equipment;
 
     public Car(String brand,String model,double engine, double price ){
         this.brand = brand;
@@ -59,11 +63,11 @@ public class Car {
         this.price = price;
     }
 
-    public Equipment getEquipment() {
+    public List<Equipment> getEquipment() {
         return equipment;
     }
 
-    public void setEquipment(Equipment equipment) {
+    public void setEquipment(List<Equipment> equipment) {
         this.equipment = equipment;
     }
 }
