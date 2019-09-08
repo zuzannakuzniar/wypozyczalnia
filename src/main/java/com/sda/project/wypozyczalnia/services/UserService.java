@@ -19,17 +19,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createNewUser(User user) {
-        User result = new User();
-        result.setName(user.getName());
-        result.setSurname(user.getSurname());
-        result.setEmail(user.getEmail());
-        result.setDlsn(user.getDlsn());
-        result.setPassword(user.getPassword());
-
-        return result;
-    }
-
     public User addNewUser(User user) {
         return userRepository.save(createNewUser(user));
     }
@@ -49,6 +38,14 @@ public class UserService {
         return users;
     }
 
+    public User deleteUserById (Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException(id, User.class.getName()));
+
+        userRepository.deleteById(id);
+        return user;
+    }
+
     public User updateUserById(Long id, User user) {
         User foundUser = userRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, User.class.getName()));
@@ -62,14 +59,16 @@ public class UserService {
         return userRepository.save(foundUser);
     }
 
-    public User deleteUserById (Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException(id, User.class.getName()));
+    public User createNewUser(User user) {
+        User result = new User();
+        result.setName(user.getName());
+        result.setSurname(user.getSurname());
+        result.setEmail(user.getEmail());
+        result.setDlsn(user.getDlsn());
+        result.setPassword(user.getPassword());
 
-        userRepository.deleteById(id);
-        return user;
+        return result;
     }
-
 }
 
 

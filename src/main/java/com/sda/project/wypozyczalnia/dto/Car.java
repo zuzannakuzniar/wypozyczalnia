@@ -1,8 +1,8 @@
 package com.sda.project.wypozyczalnia.dto;
 
 
-import javax.persistence.*;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 
 import java.util.List;
 
-
+@Entity
 public class Car {
 
     @Id
@@ -20,8 +20,8 @@ public class Car {
     private String model;
     private double engine;
     private double price;
-    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
-    private List<Equipment> equipment;
+//@OneToMany
+//    private List<Equipment> equipment;
 
     public Car(String brand,String model,double engine, double price ){
         this.brand = brand;
@@ -66,11 +66,11 @@ public class Car {
         this.price = price;
     }
 
-    public List<Equipment> getEquipment() {
-        return equipment;
-    }
-
-    public void setEquipment(List<Equipment> equipment) {
-        this.equipment = equipment;
-    }
+//    public List<Equipment> getEquipment() {
+//        return equipment;
+//    }
+//
+//    public void setEquipment(List<Equipment> equipment) {
+//        this.equipment = equipment;
+//    }
 }

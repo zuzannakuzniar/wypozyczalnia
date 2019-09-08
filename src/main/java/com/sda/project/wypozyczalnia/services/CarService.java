@@ -1,6 +1,5 @@
 package com.sda.project.wypozyczalnia.services;
 
-
 import com.sda.project.wypozyczalnia.dao.CarRepository;
 import com.sda.project.wypozyczalnia.dto.Car;
 import org.hibernate.ObjectNotFoundException;
@@ -14,20 +13,20 @@ public class CarService {
 
     private CarRepository carRepository;
 
-    List<Car> findByName(String name) {
-        return carRepository.findByName(name);
+    public CarService(CarRepository carRepository){
+        this.carRepository=carRepository;
     }
 
-    List<Car> findByModel(String model) {
+    public List<Car> findByBrand(String brand) {
+        return carRepository.findByBrand(brand);
+    }
+
+    public List<Car> findByModel(String model) {
         return carRepository.findByModel(model);
     }
 
-    List<Car> findByEngine(double engine) {
+    public List<Car> findByEngine(double engine) {
         return carRepository.findByEngine(engine);
-    }
-
-    public CarService(CarRepository carRepository){
-        this.carRepository=carRepository;
     }
 
     public Car addNewCar(Car car){
@@ -36,7 +35,7 @@ public class CarService {
 
     public List<Car> getAllCars(){
         List<Car> cars = new ArrayList<>();
-        carRepository.findAll().forEach(c ->cars.add(c));
+        carRepository.findAll().forEach(cars::add);
         return cars;
     }
 
@@ -50,7 +49,7 @@ public class CarService {
                 .orElseThrow(() -> new ObjectNotFoundException(id, Car.class.getName()));
         car1.setBrand(car.getBrand());
         car1.setEngine(car.getEngine());
-        car1.setEquipment(car.getEquipment());
+//        car1.setEquipment(car.getEquipment());
         car1.setModel(car.getModel());
         car1.setPrice(car.getPrice());
         return car1;
