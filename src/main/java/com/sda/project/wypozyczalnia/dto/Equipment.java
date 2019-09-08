@@ -1,4 +1,4 @@
-package com.sda.project.wypozyczalnia.model;
+package com.sda.project.wypozyczalnia.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

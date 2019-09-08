@@ -1,8 +1,12 @@
-package com.sda.project.wypozyczalnia.model;
+package com.sda.project.wypozyczalnia.dto;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+<<<<<<< HEAD:src/main/java/com/sda/project/wypozyczalnia/model/User.java
+=======
+
+>>>>>>> 558ecfe62e196eaa4ec4e9b0b992af9607489035:src/main/java/com/sda/project/wypozyczalnia/dto/User.java
 public class User {
 
     @Id

@@ -1,12 +1,14 @@
-package com.sda.project.wypozyczalnia.service;
+package com.sda.project.wypozyczalnia.services;
 
 import com.sda.project.wypozyczalnia.dao.UserRepository;
-import com.sda.project.wypozyczalnia.model.User;
+
+import com.sda.project.wypozyczalnia.dto.User;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class UserService {
