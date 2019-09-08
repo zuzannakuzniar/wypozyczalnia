@@ -97,7 +97,17 @@ CREATE TABLE IF NOT EXISTS `wypozyczalnia`.`basket` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `wypozyczalnia`.`employee` (
+  `idemployee` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `surname` VARCHAR(45) NOT NULL,
+  `position` varchar(45) NOT NULL,
+  `department` varchar(45) not null,
+  primary key (`idemployee`))
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+alter table `cars` add `status` varchar(45);
