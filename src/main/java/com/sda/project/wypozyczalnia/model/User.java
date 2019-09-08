@@ -1,5 +1,6 @@
 package com.sda.project.wypozyczalnia.model;
 
+<<<<<<< HEAD
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -68,4 +69,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+=======
+public class User {
+
+>>>>>>> a4035494f1e1312394c56583b4cdbcd275e87b24
 }
