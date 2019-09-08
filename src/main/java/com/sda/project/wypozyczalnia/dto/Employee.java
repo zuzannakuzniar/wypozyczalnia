@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+<<<<<<< HEAD:src/main/java/com/sda/project/wypozyczalnia/dto/Employee.java
+=======
+
+>>>>>>> adding CarService:src/main/java/com/sda/project/wypozyczalnia/dto/Employee.java
 public class Employee {
 
     @Id

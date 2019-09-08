@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
+<<<<<<< HEAD:src/main/java/com/sda/project/wypozyczalnia/dto/User.java
+=======
+
+>>>>>>> adding CarService:src/main/java/com/sda/project/wypozyczalnia/dto/User.java
 public class User {
 
     @Id

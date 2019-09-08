@@ -1,6 +1,14 @@
 package com.sda.project.wypozyczalnia.dto;
 
+<<<<<<< HEAD:src/main/java/com/sda/project/wypozyczalnia/dto/Car.java
 import javax.persistence.*;
+=======
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+>>>>>>> adding CarService:src/main/java/com/sda/project/wypozyczalnia/dto/Car.java
 import java.util.List;
 
 

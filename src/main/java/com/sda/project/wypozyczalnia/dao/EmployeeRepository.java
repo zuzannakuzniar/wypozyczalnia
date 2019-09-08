@@ -1,7 +1,10 @@
 package com.sda.project.wypozyczalnia.dao;
 
 import com.sda.project.wypozyczalnia.dto.Employee;
+<<<<<<< HEAD
 import com.sda.project.wypozyczalnia.dto.Position;
+=======
+>>>>>>> adding CarService
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
