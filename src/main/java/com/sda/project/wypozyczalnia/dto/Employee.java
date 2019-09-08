@@ -1,10 +1,9 @@
-package com.sda.project.wypozyczalnia.model;
+package com.sda.project.wypozyczalnia.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
 public class Employee {
 
     @Id
@@ -22,6 +21,9 @@ public class Employee {
         this.position = position;
     }
 
+    public Employee() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -34,7 +36,7 @@ public class Employee {
         this.name = name;
     }
 
-    public String getSurtname() {
+    public String getSurname() {
         return surname;
     }
 

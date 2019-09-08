@@ -1,13 +1,9 @@
-package com.sda.project.wypozyczalnia.model;
+package com.sda.project.wypozyczalnia.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.websocket.OnMessage;
+import javax.persistence.*;
 import java.util.List;
 
-@Entity
+
 public class Car {
 
     @Id
@@ -17,7 +13,7 @@ public class Car {
     private String model;
     private double engine;
     private double price;
-    @OneToMany
+    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
     private List<Equipment> equipment;
 
     public Car(String brand,String model,double engine, double price ){
