@@ -18,7 +18,7 @@ public class Config {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.url("jdbc:mysql://localhost:3306/wypozyczalnia?serverTimezone=Europe/Warsaw");
         dataSourceBuilder.username("root");
-        dataSourceBuilder.password("Hakunamatata1");
+        dataSourceBuilder.password("BartekPuci2507@");
         dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
         return dataSourceBuilder.build();
 
