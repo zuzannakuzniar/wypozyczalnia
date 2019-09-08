@@ -14,6 +14,18 @@ public class CarService {
 
     private CarRepository carRepository;
 
+    List<Car> findByName(String name) {
+        return carRepository.findByName(name);
+    }
+
+    List<Car> findByModel(String model) {
+        return carRepository.findByModel(model);
+    }
+
+    List<Car> findByEngine(double engine) {
+        return carRepository.findByEngine(engine);
+    }
+
     public CarService(CarRepository carRepository){
         this.carRepository=carRepository;
     }

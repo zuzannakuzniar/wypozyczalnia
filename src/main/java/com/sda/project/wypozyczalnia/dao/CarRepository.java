@@ -14,8 +14,8 @@ public interface CarRepository extends CrudRepository<Car, Long> {
 
 
 
-    List<Employee> findByName(String name);
-    List<Employee> findByModel(String model);
-    List<Employee> findByEngine(double engine);
+    List<Car> findByName(String name);
+    List<Car> findByModel(String model);
+    List<Car> findByEngine(double engine);
 
 }
