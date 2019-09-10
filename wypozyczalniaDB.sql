@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `wypozyczalnia`.`cars` (
   `brand` VARCHAR(45) NOT NULL,
   `model` VARCHAR(45) NOT NULL,
   `engine` VARCHAR(45) NOT NULL,
-  `price` VARCHAR(45) NOT NULL,
+  `price` DECIMAL(8,2) NOT NULL,
   `equipment_idequipment` INT NOT NULL,
   PRIMARY KEY (`idcar`),
   INDEX `fk_cars_equipment1_idx` (`equipment_idequipment` ASC) VISIBLE,
