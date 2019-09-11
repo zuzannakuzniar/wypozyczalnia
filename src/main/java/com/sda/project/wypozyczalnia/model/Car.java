@@ -7,13 +7,14 @@ import com.sda.project.wypozyczalnia.extras.Status;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Car {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String brand;
     private String model;
@@ -33,6 +34,9 @@ public class Car {
         this.mileage = mileage;
         this.status = status;
         this.price = price;
+    }
+
+    public Car() {
     }
 
     public Long getId() {

@@ -2,15 +2,15 @@ package com.sda.project.wypozyczalnia.model;
 
 //import com.sda.project.wypozyczalnia.extras.Privileges;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
@@ -18,7 +18,10 @@ public class User {
     private String email;
     private String dlsn;
     private String password;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    public Set<Order> orders = new HashSet<Order>();
 //    private Privileges privileges;
+
 
     public User(String name, String surname, String email, String dlsn, String password/*, Privileges privileges*/) {
         this.name = name;
