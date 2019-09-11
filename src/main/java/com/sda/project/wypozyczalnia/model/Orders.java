@@ -6,19 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Equipment {
-
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String decription;
 
-    public Equipment(String decription) {
-        this.decription = decription;
+    private double summary;
+
+    public Orders(double summary) {
+        this.summary = summary;
     }
 
-    public Equipment() {
+    public Orders() {
     }
 
     public Long getId() {
@@ -29,9 +29,11 @@ public class Equipment {
         this.id = id;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public double getSummary() {
+        return summary;
     }
 
-
+    public void setSummary(double summary) {
+        this.summary = summary;
+    }
 }

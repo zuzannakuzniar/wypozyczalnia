@@ -13,4 +13,4 @@
 - upgraded Status, Car, User;
 - added Privileges [testing];
 - fixed ERROR on EmployeeRepository, EmployeeService methods;
-- added Order [testing];
+- added Orders [testing];
