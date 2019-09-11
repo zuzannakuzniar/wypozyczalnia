@@ -1,5 +1,7 @@
 package com.sda.project.wypozyczalnia.model;
 
+//import com.sda.project.wypozyczalnia.extras.Privileges;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,13 +18,15 @@ public class User {
     private String email;
     private String dlsn;
     private String password;
+//    private Privileges privileges;
 
-    public User(String name, String surname, String email, String dlsn, String password) {
+    public User(String name, String surname, String email, String dlsn, String password/*, Privileges privileges*/) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.dlsn = dlsn;
         this.password = password;
+//        this.privileges = privileges;
     }
 
     public User() {
@@ -74,5 +78,26 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+//    public Privileges getPrivileges() {
+//        return privileges;
+//    }
+//
+//    public void setPrivileges(Privileges privileges) {
+//        this.privileges = privileges;
+//    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", dlsn='" + dlsn + '\'' +
+                ", password='" + password + '\'' +
+//                ", privileges=" + privileges +
+                '}';
     }
 }

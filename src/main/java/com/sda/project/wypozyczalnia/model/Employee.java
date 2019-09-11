@@ -19,10 +19,10 @@ public class Employee {
     private Role role;
     private String department;
 
-    public Employee(String name, String surname, Role role, String department){
-        this.department = department;
+    public Employee(String name, String surname, String department, Role role){
         this.name = name;
         this.surname = surname;
+        this.department = department;
         this.role = role;
     }
 

@@ -1,6 +1,7 @@
 package com.sda.project.wypozyczalnia.services;
 
 import com.sda.project.wypozyczalnia.dao.EmployeeRepository;
+import com.sda.project.wypozyczalnia.extras.Role;
 import com.sda.project.wypozyczalnia.model.Employee;
 import com.google.common.collect.Lists;
 import org.hibernate.ObjectNotFoundException;
@@ -53,7 +54,7 @@ public class EmployeeService {
         result.setName(employee.getName());
         result.setSurname(employee.getSurname());
         result.setDepartment(employee.getDepartment());
-        result.setRole(employee.getRole());
+        result.setRole(Role.PRACOWNIK);
 
         return result;
     }
@@ -64,6 +65,10 @@ public class EmployeeService {
     
     private List<Employee> findEmployeeBySurname(String surname){
         return employeeRepository.findBySurname(surname);
+    }
+
+    private List<Employee> findEmployeeByRole(Role role){
+        return employeeRepository.findByRole(role);
     }
     
     private List<Employee> findEmployeeByDepartment(String department){

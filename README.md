@@ -7,7 +7,9 @@
 - added "dto" for Users;
 - added fetching @ManyToOne to dto.
 
-Changelog v1.1
-- Added Roles USER, MANAGER (testing);
+# Changelog v1.1
+- Added Role: PRACOWNIK, MANAGER;
 - added Colors;
-- upgraded Status and Car;
+- upgraded Status, Car, User;
+- added Privileges [testing];
+- fixed ERROR on EmployeeRepository, EmployeeService methods;

@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(final HttpSecurity http) throws Exception {
         http
                 // allows swagger public access
                 .authorizeRequests()
@@ -34,15 +34,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 // allows h2 public access
                 .authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/wypozyczalnia/**", "/").permitAll()
                 .and().headers().frameOptions().sameOrigin()
                 .and()
                 // back to app endpoints configuration
                 .authorizeRequests()
-                .antMatchers(HttpMethod.DELETE, "/posts/*").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/posts/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/posts/").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.GET, "/posts/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/users/*").permitAll()
+                .antMatchers(HttpMethod.PUT, "/users/*").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/users/").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/users/*").hasRole("ADMIN")
+
+
                 .anyRequest().authenticated()
                 .and()
                 // allows POST, PUT, DELETE requests from outside (postman)
