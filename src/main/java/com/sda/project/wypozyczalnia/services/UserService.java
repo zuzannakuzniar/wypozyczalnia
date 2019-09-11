@@ -3,12 +3,10 @@ package com.sda.project.wypozyczalnia.services;
 import com.google.common.collect.Lists;
 import com.sda.project.wypozyczalnia.dao.UserRepository;
 
-import com.sda.project.wypozyczalnia.dto.UserForm;
 import com.sda.project.wypozyczalnia.model.User;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -20,7 +18,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User addNewUser(UserForm userForm) {
+    public User addNewUser(User userForm) {
         return userRepository.save(createNewUser(userForm));
     }
 
@@ -45,7 +43,7 @@ public class UserService {
         return user;
     }
 
-    public User updateUserById(Long id, UserForm userForm) {
+    public User updateUserById(Long id, User userForm) {
         User foundUser = userRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, User.class.getName()));
 
@@ -58,7 +56,7 @@ public class UserService {
         return userRepository.save(foundUser);
     }
 
-    private User createNewUser(UserForm userForm) {
+    private User createNewUser(User userForm) {
 
         User result = new User();
         result.setName(userForm.getName());

@@ -12,15 +12,13 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
-    private User name;
-
+    private String name;
     private String surname;
     private String email;
     private String dlsn;
     private String password;
 
-    public User(User name, String surname, String email, String dlsn, String password) {
+    public User(String name, String surname, String email, String dlsn, String password) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -39,11 +37,11 @@ public class User {
         this.id = id;
     }
 
-    public User getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(User name) {
+    public void setName(String name) {
         this.name = name;
     }
 

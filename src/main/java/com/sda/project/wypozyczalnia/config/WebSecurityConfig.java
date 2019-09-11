@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 // allows swagger public access
                 .authorizeRequests()
-                .antMatchers("/", "/csrf", "/swagger-ui.html", "/webjars/**", "/v2/api-docs**", "/swagger-resources/**").permitAll()
+                .antMatchers("/", "/csrf", "/swagger-ui.html", "/webjars/**", "/v2/controllers-docs**", "/swagger-resources/**").permitAll()
                 .and()
                 // allows h2 public access
                 .authorizeRequests()

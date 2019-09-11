@@ -1,6 +1,5 @@
-package com.sda.project.wypozyczalnia.api;
+package com.sda.project.wypozyczalnia.controllers;
 
-import com.sda.project.wypozyczalnia.dto.UserForm;
 import com.sda.project.wypozyczalnia.model.User;
 import com.sda.project.wypozyczalnia.services.UserService;
 import org.hibernate.ObjectNotFoundException;
@@ -21,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping
-    public User addNewUser(@RequestBody UserForm userForm) {
+    public User addNewUser(@RequestBody User userForm) {
         User savedUser = userService.addNewUser(userForm);
         return savedUser;
     }
@@ -40,7 +39,7 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public User updateUser(@PathVariable("id") Long id, @RequestBody UserForm userForm) {
+    public User updateUser(@PathVariable("id") Long id, @RequestBody User userForm) {
         return userService.updateUserById(id, userForm);
     }
 
