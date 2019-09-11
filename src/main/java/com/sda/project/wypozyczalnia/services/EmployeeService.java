@@ -40,7 +40,7 @@ public class EmployeeService {
     public Employee updateEmployeeById(Long id, Employee employee){
         Employee foundEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Employee.class.getName()));
-        foundEmployee.setPosition(employee.getPosition());
+        foundEmployee.setRole(employee.getRole());
         foundEmployee.setDepartment(employee.getDepartment());
         foundEmployee.setSurname(employee.getSurname());
         foundEmployee.setName(employee.getName());
@@ -53,7 +53,7 @@ public class EmployeeService {
         result.setName(employee.getName());
         result.setSurname(employee.getSurname());
         result.setDepartment(employee.getDepartment());
-        result.setPosition(employee.getPosition());
+        result.setRole(employee.getRole());
 
         return result;
     }

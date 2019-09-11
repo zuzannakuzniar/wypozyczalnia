@@ -2,13 +2,12 @@ package com.sda.project.wypozyczalnia.model;
 
 
 
+import com.sda.project.wypozyczalnia.extras.Colors;
+import com.sda.project.wypozyczalnia.extras.Status;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-
-import java.util.List;
 
 @Entity
 public class Car {
@@ -19,14 +18,20 @@ public class Car {
     private String brand;
     private String model;
     private double engine;
+    private String productionYear;
+    private Colors color;
+    private double mileage;
+    private Status status;
     private double price;
-//@OneToMany
-//    private List<Equipment> equipment;
 
-    public Car(String brand,String model,double engine, double price ){
+    public Car(String brand, String model, double engine, String productionYear, Colors color, double mileage, Status status, double price) {
         this.brand = brand;
-        this.engine = engine;
         this.model = model;
+        this.engine = engine;
+        this.productionYear = productionYear;
+        this.color = color;
+        this.mileage = mileage;
+        this.status = status;
         this.price = price;
     }
 
@@ -66,7 +71,43 @@ public class Car {
         this.price = price;
     }
 
-//    public List<Equipment> getEquipment() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getProductionYear() {
+        return productionYear;
+    }
+
+    public void setProductionYear(String productionYear) {
+        this.productionYear = productionYear;
+    }
+
+    public Colors getColor() {
+        return color;
+    }
+
+    public void setColor(Colors color) {
+        this.color = color;
+    }
+
+    public double getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(double mileage) {
+        this.mileage = mileage;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    //    public List<Equipment> getEquipment() {
 //        return equipment;
 //    }
 //

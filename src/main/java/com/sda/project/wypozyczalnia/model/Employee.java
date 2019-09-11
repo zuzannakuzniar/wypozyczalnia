@@ -1,6 +1,6 @@
 package com.sda.project.wypozyczalnia.model;
 
-import com.sda.project.wypozyczalnia.extras.Position;
+import com.sda.project.wypozyczalnia.extras.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,14 +16,14 @@ public class Employee {
     private Long id;
     private String name;
     private String surname;
-    private Position position;
+    private Role role;
     private String department;
 
-    public Employee(String name, String surname, Position position, String department){
+    public Employee(String name, String surname, Role role, String department){
         this.department = department;
         this.name = name;
         this.surname = surname;
-        this.position = position;
+        this.role = role;
     }
 
     public Employee() {
@@ -49,12 +49,12 @@ public class Employee {
         this.surname = surname;
     }
 
-    public Position getPosition() {
-        return position;
+    public Role getRole() {
+        return role;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getDepartment() {

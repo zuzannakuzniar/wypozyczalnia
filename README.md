@@ -7,5 +7,7 @@
 - added "dto" for Users;
 - added fetching @ManyToOne to dto.
 
-
-Do poprawy zwracanie info CRUD
+Changelog v1.1
+- Added Roles USER, MANAGER (testing);
+- added Colors;
+- upgraded Status and Car;
