@@ -1,4 +1,4 @@
-package com.sda.project.wypozyczalnia.dto;
+package com.sda.project.wypozyczalnia.extras;
 
 public enum Status {
     AVAILABLE,

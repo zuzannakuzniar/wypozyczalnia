@@ -1,13 +1,14 @@
 package com.sda.project.wypozyczalnia.services;
 
+import com.google.common.collect.Lists;
 import com.sda.project.wypozyczalnia.dao.UserRepository;
 
-import com.sda.project.wypozyczalnia.dto.User;
+import com.sda.project.wypozyczalnia.dto.UserForm;
+import com.sda.project.wypozyczalnia.model.User;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -19,8 +20,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User addNewUser(User user) {
-        return userRepository.save(createNewUser(user));
+    public User addNewUser(UserForm userForm) {
+        return userRepository.save(createNewUser(userForm));
     }
 
     public List<User> getUserByName(String name) {
@@ -33,9 +34,7 @@ public class UserService {
             }
 
     public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
-        return users;
+        return Lists.newArrayList(userRepository.findAll());
     }
 
     public User deleteUserById (Long id) {
@@ -46,26 +45,27 @@ public class UserService {
         return user;
     }
 
-    public User updateUserById(Long id, User user) {
+    public User updateUserById(Long id, UserForm userForm) {
         User foundUser = userRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, User.class.getName()));
 
-        foundUser.setName(user.getName());
-        foundUser.setSurname(user.getSurname());
-        foundUser.setEmail(user.getEmail());
-        foundUser.setDlsn(user.getDlsn());
-        foundUser.setPassword(user.getPassword());
+        foundUser.setName(userForm.getName());
+        foundUser.setSurname(userForm.getSurname());
+        foundUser.setEmail(userForm.getEmail());
+        foundUser.setDlsn(userForm.getDlsn());
+        foundUser.setPassword(userForm.getPassword());
 
         return userRepository.save(foundUser);
     }
 
-    public User createNewUser(User user) {
+    private User createNewUser(UserForm userForm) {
+
         User result = new User();
-        result.setName(user.getName());
-        result.setSurname(user.getSurname());
-        result.setEmail(user.getEmail());
-        result.setDlsn(user.getDlsn());
-        result.setPassword(user.getPassword());
+        result.setName(userForm.getName());
+        result.setSurname(userForm.getSurname());
+        result.setEmail(userForm.getEmail());
+        result.setDlsn(userForm.getDlsn());
+        result.setPassword(userForm.getPassword());
 
         return result;
     }

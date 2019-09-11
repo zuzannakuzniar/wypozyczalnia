@@ -1,11 +1,10 @@
 package com.sda.project.wypozyczalnia.services;
 
 import com.sda.project.wypozyczalnia.dao.EmployeeRepository;
-import com.sda.project.wypozyczalnia.dto.Employee;
+import com.sda.project.wypozyczalnia.model.Employee;
 import com.google.common.collect.Lists;
 import org.hibernate.ObjectNotFoundException;
 
-import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 

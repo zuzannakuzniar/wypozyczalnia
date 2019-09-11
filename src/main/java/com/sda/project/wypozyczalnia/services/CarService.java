@@ -1,7 +1,7 @@
 package com.sda.project.wypozyczalnia.services;
 
 import com.sda.project.wypozyczalnia.dao.CarRepository;
-import com.sda.project.wypozyczalnia.dto.Car;
+import com.sda.project.wypozyczalnia.model.Car;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 

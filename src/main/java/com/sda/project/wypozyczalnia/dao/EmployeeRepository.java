@@ -1,8 +1,7 @@
 package com.sda.project.wypozyczalnia.dao;
 
-import com.sda.project.wypozyczalnia.dto.Employee;
-
-import com.sda.project.wypozyczalnia.dto.Position;
+import com.sda.project.wypozyczalnia.extras.Position;
+import com.sda.project.wypozyczalnia.model.Employee;
 
 import org.springframework.data.repository.CrudRepository;
 

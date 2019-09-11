@@ -1,37 +1,22 @@
 package com.sda.project.wypozyczalnia.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sda.project.wypozyczalnia.model.User;
 
-@Entity
-public class User {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UserForm {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String name;
+    private User name;
     private String surname;
     private String email;
     private String dlsn;
     private String password;
 
-    public User() {
-    }
-
-    public User(String name, String surname, String email, String dlsn, String password) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.dlsn = dlsn;
-        this.password = password;
-    }
-
-    public String getName() {
+    public User getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(User name) {
         this.name = name;
     }
 
