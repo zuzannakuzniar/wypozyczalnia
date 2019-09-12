@@ -21,3 +21,8 @@
 ## Changelog v1.2.0
 ##### 12.09.2019
 - Added all models by presentation of project;
+
+## Changelog v1.2.3
+##### 12.09.2019
+
+-Added CarController and antMatchers in WebSecurityConfig;
