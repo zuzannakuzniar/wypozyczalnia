@@ -1,7 +1,5 @@
 package com.sda.project.wypozyczalnia.model;
 
-
-
 import com.sda.project.wypozyczalnia.extras.Colors;
 import com.sda.project.wypozyczalnia.extras.Status;
 
@@ -15,6 +13,7 @@ public class Car {
     @Id
     @GeneratedValue
     private Long id;
+
     private String brand;
     private String model;
     private double engine;
@@ -33,6 +32,9 @@ public class Car {
         this.mileage = mileage;
         this.status = status;
         this.price = price;
+    }
+
+    public Car() {
     }
 
     public Long getId() {
@@ -107,11 +109,18 @@ public class Car {
         this.status = status;
     }
 
-    //    public List<Equipment> getEquipment() {
-//        return equipment;
-//    }
-//
-//    public void setEquipment(List<Equipment> equipment) {
-//        this.equipment = equipment;
-//    }
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", engine=" + engine +
+                ", productionYear='" + productionYear + '\'' +
+                ", color=" + color +
+                ", mileage=" + mileage +
+                ", status=" + status +
+                ", price=" + price +
+                '}';
+    }
 }

@@ -11,8 +11,15 @@ public class Equipment {
     @Id
     @GeneratedValue
     private Long id;
+
     private String decription;
 
+    public Equipment(String decription) {
+        this.decription = decription;
+    }
+
+    public Equipment() {
+    }
 
     public Long getId() {
         return id;
@@ -26,5 +33,15 @@ public class Equipment {
         this.decription = decription;
     }
 
+    public String getDecription() {
+        return decription;
+    }
 
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "id=" + id +
+                ", decription='" + decription + '\'' +
+                '}';
+    }
 }
