@@ -37,12 +37,12 @@ public class CarController {
     }
 
     @GetMapping("{id}")
-    public Car getUserById(@PathVariable("id") Long id) {
+    public Car getOneCarById(@PathVariable("id") Long id) {
         return carService.getOneCarById(id);
     }
 
     @PutMapping("{id}")
-    public Car updateUser(@PathVariable("id") Long id, @RequestBody Car carForm) {
+    public Car updateCarById(@PathVariable("id") Long id, @RequestBody Car carForm) {
         return carService.updateCarById(id, carForm);
     }
 
