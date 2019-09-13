@@ -44,7 +44,7 @@ public class CarService {
                 .orElseThrow(() -> new ObjectNotFoundException(id, Car.class.getName()));
     }
 
-    public Car updateCar(Long id, Car car){
+    public Car updateCarById(Long id, Car car){
         Car car1 = carRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Car.class.getName()));
         car1.setBrand(car.getBrand());
@@ -54,7 +54,7 @@ public class CarService {
         car1.setPrice(car.getPrice());
         return car1;
     }
-    public void deleteById(Long id){
+    public void deleteCarById(Long id){
         Car id1 = carRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id,Car.class.getName()));
         carRepository.deleteById(id);
     }
