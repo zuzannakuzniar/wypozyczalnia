@@ -1,4 +1,5 @@
 # Serwis do prowadzenia wypożyczalni samochodów
+
 ## Changelog v1.0
 ##### 10.09.2019
 - reworked connection to database from H2 to MySql;
