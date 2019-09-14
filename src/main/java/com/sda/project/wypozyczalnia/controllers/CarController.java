@@ -1,7 +1,6 @@
 package com.sda.project.wypozyczalnia.controllers;
 
 import com.sda.project.wypozyczalnia.model.Car;
-import com.sda.project.wypozyczalnia.model.User;
 import com.sda.project.wypozyczalnia.services.CarService;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -28,7 +27,7 @@ public class CarController {
         return savedCar;
     }
 
-    @GetMapping(("/get/"))
+    @GetMapping("/get/")
     public List<Car> getAllCars(@RequestParam(name = "cars", required = false) Car cars) {
         if (!StringUtils.isEmpty(cars)) {
             return carService.getAllCars();
