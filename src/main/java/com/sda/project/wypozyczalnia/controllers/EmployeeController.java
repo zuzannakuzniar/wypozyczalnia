@@ -45,7 +45,7 @@ public class EmployeeController {
        return employeeService.findEmployeeByName(name);
     }
 
-    @GetMapping("{Surname}")
+    @GetMapping("{surname}")
     public List<Employee> getEmployeesBySurname(@PathVariable("surname") String surname){
         return employeeService.findEmployeeBySurname(surname);
     }
