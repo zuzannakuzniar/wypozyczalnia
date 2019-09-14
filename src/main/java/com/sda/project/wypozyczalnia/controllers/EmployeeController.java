@@ -31,7 +31,7 @@ import java.util.List;
         }
 
         @GetMapping(("/get/"))
-        public List<Employee> getAllEmployees(@RequestParam(name = "employees", required = false) Employee employees) {
+        public List<Employee> getAllEmployees(@RequestParam(name = "", required = false) Employee employees) {
             if (!StringUtils.isEmpty(employees)) {
                 return employeeService.getAllEmployees();
             }

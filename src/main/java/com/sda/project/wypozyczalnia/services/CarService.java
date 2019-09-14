@@ -17,6 +17,18 @@ public class CarService {
         this.carRepository=carRepository;
     }
 
+    public List<Car> findByBrand(String brand) {
+        return carRepository.findByBrand(brand);
+    }
+
+    public List<Car> findByModel(String model) {
+        return carRepository.findByModel(model);
+    }
+
+    public List<Car> findByEngine(double engine) {
+        return carRepository.findByEngine(engine);
+    }
+
     public Car addNewCar(Car car){
         return carRepository.save(createNewCar(car));
     }
@@ -61,21 +73,6 @@ public class CarService {
         result.setMileage(car.getMileage());
         result.setStatus(car.getStatus());
         result.setPrice(car.getPrice());
-        return result;
-    }
-
-    private Car createNewCar(Car car) {
-
-        Car result = new Car();
-        result.setBrand(car.getBrand());
-        result.setModel(car.getModel());
-        result.setEngine(car.getEngine());
-        result.setProductionYear(car.getProductionYear());
-        result.setColor(car.getColor());
-        result.setMileage(car.getMileage());
-        result.setStatus(car.getStatus());
-        result.setPrice(car.getPrice());
-
         return result;
     }
 
