@@ -64,4 +64,19 @@ public class CarService {
         return result;
     }
 
+    private Car createNewCar(Car car) {
+
+        Car result = new Car();
+        result.setBrand(car.getBrand());
+        result.setModel(car.getModel());
+        result.setEngine(car.getEngine());
+        result.setProductionYear(car.getProductionYear());
+        result.setColor(car.getColor());
+        result.setMileage(car.getMileage());
+        result.setStatus(car.getStatus());
+        result.setPrice(car.getPrice());
+
+        return result;
+    }
+
 }
