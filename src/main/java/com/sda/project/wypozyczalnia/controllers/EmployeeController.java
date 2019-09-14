@@ -8,7 +8,6 @@ import com.sda.project.wypozyczalnia.services.EmployeeService;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,11 +16,13 @@ import java.util.List;
 @RequestMapping("/employees/")
 public class EmployeeController {
 
-    private EmployeeService employeeService;
+        private EmployeeService employeeService;
 
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+
+
+        public EmployeeController(EmployeeService employeeService){
+            this.employeeService=employeeService;
+        }
 
 
     @PostMapping()

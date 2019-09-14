@@ -6,7 +6,6 @@ import com.sda.project.wypozyczalnia.model.Car;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,7 +14,19 @@ public class CarService {
     private CarRepository carRepository;
 
     public CarService(CarRepository carRepository){
-        this.carRepository = carRepository;
+        this.carRepository=carRepository;
+    }
+
+    public List<Car> findByBrand(String brand) {
+        return carRepository.findByBrand(brand);
+    }
+
+    public List<Car> findByModel(String model) {
+        return carRepository.findByModel(model);
+    }
+
+    public List<Car> findByEngine(double engine) {
+        return carRepository.findByEngine(engine);
     }
 
     public Car addNewCar(Car car){
@@ -48,16 +59,6 @@ public class CarService {
 
         carRepository.deleteById(id);
         return car;
-    }
-
-    public List<Car> findByBrand(String brand) {
-        return carRepository.findByBrand(brand);
-    }
-    public List<Car> findByModel(String model) {
-        return carRepository.findByModel(model);
-    }
-    public List<Car> findByEngine(double engine) {
-        return carRepository.findByEngine(engine);
     }
 
     private Car createNewCar(Car car) {

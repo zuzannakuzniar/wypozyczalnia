@@ -17,17 +17,17 @@ public class Reservation {
     private String car;
     private String startReservation;
     private String endReservation;
-    private String departmentHire;
+    private String departmentRent;
     private String departmentReturn;
     private double price;
 
-    public Reservation(String date, String user, String car, String startReservation, String endReservation, String departmentHire, String departmentReturn, double price) {
+    public Reservation(String date, String user, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
         this.date = date;
         this.user = user;
         this.car = car;
         this.startReservation = startReservation;
         this.endReservation = endReservation;
-        this.departmentHire = departmentHire;
+        this.departmentRent = departmentRent;
         this.departmentReturn = departmentReturn;
         this.price = price;
     }
@@ -83,12 +83,12 @@ public class Reservation {
         this.endReservation = endReservation;
     }
 
-    public String getDepartmentHire() {
-        return departmentHire;
+    public String getDepartmentRent() {
+        return departmentRent;
     }
 
-    public void setDepartmentHire(String departmentHire) {
-        this.departmentHire = departmentHire;
+    public void setDepartmentRent(String departmentRent) {
+        this.departmentRent = departmentRent;
     }
 
     public String getDepartmentReturn() {
@@ -116,7 +116,7 @@ public class Reservation {
                 ", car='" + car + '\'' +
                 ", startReservation='" + startReservation + '\'' +
                 ", endReservation='" + endReservation + '\'' +
-                ", departmentHire='" + departmentHire + '\'' +
+                ", departmentRent='" + departmentRent + '\'' +
                 ", departmentReturn='" + departmentReturn + '\'' +
                 ", price=" + price +
                 '}';
