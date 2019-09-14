@@ -1,4 +1,5 @@
 # Serwis do prowadzenia wypożyczalni samochodów
+
 ## Changelog v1.0
 ##### 10.09.2019
 - reworked connection to database from H2 to MySql;
@@ -21,8 +22,4 @@
 ## Changelog v1.2.0
 ##### 12.09.2019
 - Added all models by presentation of project;
-
-## Changelog v1.2.3
-##### 12.09.2019
-
--Added CarController and antMatchers in WebSecurityConfig;
+- Added CarController and antMatchers in WebSecurityConfig;
