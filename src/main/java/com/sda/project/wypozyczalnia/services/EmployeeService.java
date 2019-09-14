@@ -2,6 +2,7 @@ package com.sda.project.wypozyczalnia.services;
 
 import com.sda.project.wypozyczalnia.dao.EmployeeRepository;
 import com.sda.project.wypozyczalnia.extras.Role;
+import com.sda.project.wypozyczalnia.model.Department;
 import com.sda.project.wypozyczalnia.model.Employee;
 import com.google.common.collect.Lists;
 import org.hibernate.ObjectNotFoundException;
@@ -29,7 +30,7 @@ public class EmployeeService {
         return employeeRepository.save(createNewEmployee(employee));
     }
 
-    public Employee getEmployeeById(Long id){
+    public Employee getOneEmployeeById(Long id){
         return employeeRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id,Employee.class.getName()));
     }
 
@@ -62,19 +63,19 @@ public class EmployeeService {
         return result;
     }
     
-    private List<Employee> findEmployeeByName(String name){
+    public List<Employee> findEmployeeByName(String name){
         return employeeRepository.findByName(name);
     }
     
-    private List<Employee> findEmployeeBySurname(String surname){
+    public List<Employee> findEmployeeBySurname(String surname){
         return employeeRepository.findBySurname(surname);
     }
 
-    private List<Employee> findEmployeeByRole(Role role){
+    public List<Employee> findEmployeeByRole(Role role){
         return employeeRepository.findByRole(role);
     }
     
-    private List<Employee> findEmployeeByDepartment(String department){
+    public List<Employee> findEmployeeByDepartment(Department department){
         return employeeRepository.findByDepartment(department);
     }
 }

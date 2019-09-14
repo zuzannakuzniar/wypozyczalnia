@@ -22,18 +22,18 @@ public class DepartmentService {
         return departmentRepository.save(createNewDepartment(department));
     }
 
+    public List<Department> getAllDepartments() {
+        return Lists.newArrayList(departmentRepository.findAll());
+    }
+
     public List<Department> getDepartmentByAddress(String address) {
         return departmentRepository.findByAddress(address);
     }
 
-    public Department getDepartmentById(Long id) {
+    public Department getOneDepartmentById(Long id) {
         return departmentRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Department.class.getName()));
             }
-
-    public List<Department> getAllDepartments() {
-        return Lists.newArrayList(departmentRepository.findAll());
-    }
 
     public Department deleteDepartmentById (Long id) {
         Department department = departmentRepository.findById(id)
@@ -48,6 +48,8 @@ public class DepartmentService {
                 .orElseThrow(() -> new ObjectNotFoundException(id, Department.class.getName()));
 
         foundDepartment.setAddress(department.getAddress());
+        foundDepartment.setAvailableCarList(department.getAvailableCarList());
+        foundDepartment.setEmployeeList(department.getEmployeeList());
 
         return departmentRepository.save(foundDepartment);
     }

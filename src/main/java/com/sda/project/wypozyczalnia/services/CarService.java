@@ -1,11 +1,11 @@
 package com.sda.project.wypozyczalnia.services;
 
+import com.google.common.collect.Lists;
 import com.sda.project.wypozyczalnia.dao.CarRepository;
 import com.sda.project.wypozyczalnia.model.Car;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,9 +34,7 @@ public class CarService {
     }
 
     public List<Car> getAllCars(){
-        List<Car> cars = new ArrayList<>();
-        carRepository.findAll().forEach(cars::add);
-        return cars;
+     return Lists.newArrayList(carRepository.findAll());
     }
 
     public Car getOneCarById(Long id){
