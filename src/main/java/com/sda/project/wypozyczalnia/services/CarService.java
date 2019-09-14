@@ -1,5 +1,6 @@
 package com.sda.project.wypozyczalnia.services;
 
+import com.google.common.collect.Lists;
 import com.sda.project.wypozyczalnia.dao.CarRepository;
 import com.sda.project.wypozyczalnia.model.Car;
 import org.hibernate.ObjectNotFoundException;
@@ -14,7 +15,7 @@ public class CarService {
     private CarRepository carRepository;
 
     public CarService(CarRepository carRepository){
-        this.carRepository=carRepository;
+        this.carRepository = carRepository;
     }
 
     public Car addNewCar(Car car){
@@ -22,9 +23,7 @@ public class CarService {
     }
 
     public List<Car> getAllCars(){
-        List<Car> cars = new ArrayList<>();
-        carRepository.findAll().forEach(cars::add);
-        return cars;
+     return Lists.newArrayList(carRepository.findAll());
     }
 
     public Car getOneCarById(Long id){
@@ -51,21 +50,17 @@ public class CarService {
         return car;
     }
 
-    private Car createNewCar(Car car) {
-        Car result = new Car();
-        result.setBrand(car.getBrand());
-        result.setModel(car.getModel());
-        result.setEngine(car.getEngine());
-        result.setProductionYear(car.getProductionYear());
-        result.setColor(car.getColor());
-        result.setMileage(car.getMileage());
-        result.setStatus(car.getStatus());
-        result.setPrice(car.getPrice());
-        return result;
+    public List<Car> findByBrand(String brand) {
+        return carRepository.findByBrand(brand);
+    }
+    public List<Car> findByModel(String model) {
+        return carRepository.findByModel(model);
+    }
+    public List<Car> findByEngine(double engine) {
+        return carRepository.findByEngine(engine);
     }
 
     private Car createNewCar(Car car) {
-
         Car result = new Car();
         result.setBrand(car.getBrand());
         result.setModel(car.getModel());
@@ -75,7 +70,6 @@ public class CarService {
         result.setMileage(car.getMileage());
         result.setStatus(car.getStatus());
         result.setPrice(car.getPrice());
-
         return result;
     }
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/cars")
 public class CarController {
 
     private CarService carService;
@@ -35,13 +35,28 @@ public class CarController {
         return carService.getOneCarById(id);
     }
 
+    @GetMapping("/{brand}")
+    public List<Car> getCarsByBrand(@PathVariable("brand") String brand){
+        return carService.findByBrand(brand);
+    }
+
+    @GetMapping("/{model}")
+    public List<Car> getCarsByModel(@PathVariable("model") String model){
+        return carService.findByModel(model);
+    }
+
+    @GetMapping("/{engine}")
+    public List<Car> getCarsByEngine(@PathVariable("engine") double engine){
+        return carService.findByEngine(engine);
+    }
+
     @PutMapping("/{id}")
     public Car updateCarById(@PathVariable("id") Long id, @RequestBody Car carForm) {
         return carService.updateCarById(id, carForm);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable("id") Long id) {
+    public void deleteCarById(@PathVariable("id") Long id) {
         carService.deleteCarById(id);
     }
 

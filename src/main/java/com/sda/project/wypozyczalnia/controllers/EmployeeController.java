@@ -1,6 +1,8 @@
 package com.sda.project.wypozyczalnia.controllers;
 
 
+import com.sda.project.wypozyczalnia.extras.Role;
+import com.sda.project.wypozyczalnia.model.Department;
 import com.sda.project.wypozyczalnia.model.Employee;
 import com.sda.project.wypozyczalnia.services.EmployeeService;
 import org.hibernate.ObjectNotFoundException;
@@ -11,51 +13,66 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-    @RestController
-    @RequestMapping("/employee/")
-    public class EmployeeController {
+@RestController
+@RequestMapping("/employees/")
+public class EmployeeController {
 
-        private EmployeeService employeeService;
+    private EmployeeService employeeService;
 
-
-
-        public EmployeeController(EmployeeService employeeService){
-            this.employeeService=employeeService;
-        }
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
 
-        @PostMapping("/add/")
-        public Employee addNewEmployee(@RequestBody Employee employeeForm) {
-            Employee savedEmployee = employeeService.addNewEmployee(employeeForm);
-            return savedEmployee;
-        }
+    @PostMapping()
+    public Employee addNewEmployee(@RequestBody Employee employeeForm) {
+        Employee savedEmployee = employeeService.addNewEmployee(employeeForm);
+        return savedEmployee;
+    }
 
-        @GetMapping(("/get/"))
-        public List<Employee> getAllEmployees(@RequestParam(name = "employees", required = false) Employee employees) {
-            if (!StringUtils.isEmpty(employees)) {
-                return employeeService.getAllEmployees();
-            }
-            return employeeService.getAllEmployees();
-        }
+    @GetMapping()
+    public List<Employee> getAllEmployees() {
+        return employeeService.getAllEmployees();
+    }
 
-        @GetMapping("/get/{id}")
-        public Employee getEmployeeById(@PathVariable("id") Long id) {
-            return employeeService.getEmployeeById(id);
-        }
+    @GetMapping("{id}")
+    public Employee getOneEmployeeById(@PathVariable("id") Long id) {
+        return employeeService.getOneEmployeeById(id);
+    }
 
-        @PutMapping("/update/{id}")
-        public Employee updateEmployeeById(@PathVariable("id") Long id, @RequestBody Employee employeeForm) {
-            return employeeService.updateEmployeeById(id, employeeForm);
-        }
+    @GetMapping("{name}")
+    public List<Employee> getEmployeesByName(@PathVariable("name") String name){
+       return employeeService.findEmployeeByName(name);
+    }
 
-        @DeleteMapping("/delete/{id}")
-        public void deleteEmployeeById(@PathVariable("id") Long id) {
-            employeeService.deleteEmployeeById(id);
-        }
+    @GetMapping("{Surname}")
+    public List<Employee> getEmployeesBySurname(@PathVariable("surname") String surname){
+        return employeeService.findEmployeeBySurname(surname);
+    }
 
-        @ResponseStatus(HttpStatus.NOT_FOUND)
-        @ExceptionHandler(ObjectNotFoundException.class)
-        public ResponseEntity handleObjectNotFoundException(ObjectNotFoundException onfe) {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("{role}")
+    public List<Employee> getEmployeesByRole(@PathVariable("role") Role role){
+        return employeeService.findEmployeeByRole(role);
+    }
+
+    @GetMapping("{department}")
+    public List<Employee> getEmployeesByDepartments(@PathVariable("department") Department department){
+        return employeeService.findEmployeeByDepartment(department);
+    }
+
+    @PutMapping("{id}")
+    public Employee updateEmployeeById(@PathVariable("id") Long id, @RequestBody Employee employeeForm) {
+        return employeeService.updateEmployeeById(id, employeeForm);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteEmployeeById(@PathVariable("id") Long id) {
+        employeeService.deleteEmployeeById(id);
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ObjectNotFoundException.class)
+    public ResponseEntity handleObjectNotFoundException(ObjectNotFoundException onfe) {
+        return ResponseEntity.notFound().build();
+    }
 }

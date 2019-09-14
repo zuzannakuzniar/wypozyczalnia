@@ -18,32 +18,34 @@ public class EquipmentController {
         this.equipmentService = equipmentService;
     }
 
-    @PostMapping("/add/")
+    @PostMapping()
     public Equipment addNewEquipment(@RequestBody Equipment equipment) {
         Equipment savedEquipment = equipmentService.addNewEquipment(equipment);
         return savedEquipment;
     }
 
-    @GetMapping("/get/")
-    public List<Equipment> getAllEquipments(@RequestParam(name = "description", required = false) String description) {
-        if (!StringUtils.isEmpty(description)) {
-            return equipmentService.getEquipmentByDescription(description);
-        }
+    @GetMapping()
+    public List<Equipment> getAllEquipments() {
         return equipmentService.getAllEquipments();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("{id}")
     public Equipment getEquipmentById(@PathVariable("id") Long id) {
         return equipmentService.getEquipmentById(id);
     }
 
-    @PutMapping("/update/{id}")
-    public Equipment updateEquipment(@PathVariable("id") Long id, @RequestBody Equipment equipment) {
+    @GetMapping("{description}")
+    public List<Equipment>  getEquipmentsByDescription(@PathVariable("description") String description){
+       return equipmentService.getEquipmentByDescription(description);
+    }
+
+    @PutMapping("{id}")
+    public Equipment updateEquipmentById(@PathVariable("id") Long id, @RequestBody Equipment equipment) {
         return equipmentService.updateEquipmentById(id, equipment);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteEquipment(@PathVariable("id") Long id) {
+    @DeleteMapping("{id}")
+    public void deleteEquipmentById(@PathVariable("id") Long id) {
         equipmentService.deleteEquipmentById(id);
     }
 
