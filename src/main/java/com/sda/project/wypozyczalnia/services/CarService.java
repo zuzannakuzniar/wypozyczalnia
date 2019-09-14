@@ -30,7 +30,7 @@ public class CarService {
     }
 
     public Car addNewCar(Car car){
-        return carRepository.save(car);
+        return carRepository.save(createNewCar(car));
     }
 
     public List<Car> getAllCars(){
@@ -57,6 +57,21 @@ public class CarService {
     public void deleteCarById(Long id){
         Car id1 = carRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id,Car.class.getName()));
         carRepository.deleteById(id);
+    }
+
+    private Car createNewCar(Car car) {
+
+        Car result = new Car();
+        result.setBrand(car.getBrand());
+        result.setModel(car.getModel());
+        result.setEngine(car.getEngine());
+        result.setProductionYear(car.getProductionYear());
+        result.setColor(car.getColor());
+        result.setMileage(car.getMileage());
+        result.setStatus(car.getStatus());
+        result.setPrice(car.getPrice());
+
+        return result;
     }
 
 }
