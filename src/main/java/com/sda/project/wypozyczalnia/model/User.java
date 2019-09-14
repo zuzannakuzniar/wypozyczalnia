@@ -2,14 +2,21 @@ package com.sda.project.wypozyczalnia.model;
 
 //import com.sda.project.wypozyczalnia.extras.Privileges;
 
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany
+    private List<Reservation> reservation = new ArrayList<>();
 
     private String name;
     private String surname;
@@ -80,7 +87,15 @@ public class User {
         this.password = password;
     }
 
-//    public Privileges getPrivileges() {
+    public List<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
+    }
+
+    //    public Privileges getPrivileges() {
 //        return privileges;
 //    }
 //

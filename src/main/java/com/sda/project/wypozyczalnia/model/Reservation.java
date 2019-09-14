@@ -1,19 +1,19 @@
 package com.sda.project.wypozyczalnia.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Reservation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String date;
-    private String user;
+
+    @ManyToOne
+    private User user;
+
     private String car;
     private String startReservation;
     private String endReservation;
@@ -21,7 +21,7 @@ public class Reservation {
     private String departmentReturn;
     private double price;
 
-    public Reservation(String date, String user, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
+    public Reservation(String date, User user, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
         this.date = date;
         this.user = user;
         this.car = car;
@@ -51,11 +51,11 @@ public class Reservation {
         this.date = date;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

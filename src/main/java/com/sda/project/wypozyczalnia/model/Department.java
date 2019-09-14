@@ -1,24 +1,24 @@
 package com.sda.project.wypozyczalnia.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String address;
-    private String employeeList;
+    @ManyToOne
+    private Rental rental;
+
+    @OneToOne(mappedBy = "department")
+    private Address address;
+
     private String availableCarList;
 
-    public Department(String address, String employeeList, String availableCarList) {
+    public Department(Address address, String employeeList, String availableCarList) {
         this.address = address;
-        this.employeeList = employeeList;
         this.availableCarList = availableCarList;
     }
 
@@ -33,20 +33,21 @@ public class Department {
         this.id = id;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public String getEmployeeList() {
-        return employeeList;
+
+    public Rental getRental() {
+        return rental;
     }
 
-    public void setEmployeeList(String employeeList) {
-        this.employeeList = employeeList;
+    public void setRental(Rental rental) {
+        this.rental = rental;
     }
 
     public String getAvailableCarList() {
@@ -62,7 +63,6 @@ public class Department {
         return "Department{" +
                 "id=" + id +
                 ", address='" + address + '\'' +
-                ", employeeList='" + employeeList + '\'' +
                 ", availableCarList='" + availableCarList + '\'' +
                 '}';
     }
