@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users/")
+@RequestMapping("/users")
 public class UserController {
     private UserService userService;
 
@@ -19,31 +19,31 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/add/")
+    @PostMapping()
     public User addNewUser(@RequestBody User userForm) {
         User savedUser = userService.addNewUser(userForm);
         return savedUser;
     }
 
-    @GetMapping("/get/")
-    public List<User> getAllUsers(@RequestParam(name = "name", required = false) String name) {
+    @GetMapping()
+    public List<User> getUserByName(@RequestParam(name = "name", required = false) String name) {
         if (!StringUtils.isEmpty(name)) {
             return userService.getUserByName(name);
         }
         return userService.getAllUsers();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public User getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public User updateUser(@PathVariable("id") Long id, @RequestBody User userForm) {
         return userService.updateUserById(id, userForm);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
     }

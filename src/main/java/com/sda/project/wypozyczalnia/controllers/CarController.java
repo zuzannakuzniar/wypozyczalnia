@@ -5,13 +5,12 @@ import com.sda.project.wypozyczalnia.services.CarService;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/cars/")
+@RequestMapping("/car")
 public class CarController {
 
     private CarService carService;
@@ -20,32 +19,28 @@ public class CarController {
         this.carService=carService;
     }
 
-
-    @PostMapping("/add/")
+    @PostMapping()
     public Car addNewCar(@RequestBody Car carForm) {
         Car savedCar = carService.addNewCar(carForm);
         return savedCar;
     }
 
-    @GetMapping("/get/")
-    public List<Car> getAllCars(@RequestParam(name = "cars", required = false) Car cars) {
-        if (!StringUtils.isEmpty(cars)) {
-            return carService.getAllCars();
-        }
+    @GetMapping()
+    public List<Car> getAllCars() {
         return carService.getAllCars();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public Car getOneCarById(@PathVariable("id") Long id) {
         return carService.getOneCarById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public Car updateCarById(@PathVariable("id") Long id, @RequestBody Car carForm) {
         return carService.updateCarById(id, carForm);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCar(@PathVariable("id") Long id) {
         carService.deleteCarById(id);
     }
