@@ -35,17 +35,17 @@ public class CarController {
         return carService.getAllCars();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/get/{id}")
     public Car getOneCarById(@PathVariable("id") Long id) {
         return carService.getOneCarById(id);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/update/{id}")
     public Car updateCarById(@PathVariable("id") Long id, @RequestBody Car carForm) {
         return carService.updateCarById(id, carForm);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteCar(@PathVariable("id") Long id) {
         carService.deleteCarById(id);
     }

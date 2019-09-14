@@ -47,7 +47,7 @@ public class HireService {
         Equipment foundEquipment = equipmentRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Equipment.class.getName()));
 
-        foundEquipment.setDecription(equipment.getDecription());
+        foundEquipment.setDescription(equipment.getDescription());
 
         return equipmentRepository.save(foundEquipment);
     }
@@ -56,7 +56,7 @@ public class HireService {
 
         Equipment result = new Equipment();
 
-        result.setDecription(equipment.getDecription());
+        result.setDescription(equipment.getDescription());
 
         return result;
     }

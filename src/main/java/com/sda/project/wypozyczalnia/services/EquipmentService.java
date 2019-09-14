@@ -2,7 +2,6 @@ package com.sda.project.wypozyczalnia.services;
 
 import com.google.common.collect.Lists;
 import com.sda.project.wypozyczalnia.dao.EquipmentRepository;
-import com.sda.project.wypozyczalnia.model.Department;
 import com.sda.project.wypozyczalnia.model.Equipment;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
@@ -48,7 +47,7 @@ public class EquipmentService {
         Equipment foundEquipment = equipmentRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Equipment.class.getName()));
 
-        foundEquipment.setDecription(equipment.getDecription());
+        foundEquipment.setDescription(equipment.getDescription());
 
         return equipmentRepository.save(foundEquipment);
     }
@@ -57,7 +56,7 @@ public class EquipmentService {
 
         Equipment result = new Equipment();
 
-        result.setDecription(equipment.getDecription());
+        result.setDescription(equipment.getDescription());
 
         return result;
     }

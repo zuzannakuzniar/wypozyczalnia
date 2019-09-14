@@ -18,13 +18,13 @@ public class EquipmentController {
         this.equipmentService = equipmentService;
     }
 
-    @PostMapping("/create")
+    @PostMapping("/add/")
     public Equipment addNewEquipment(@RequestBody Equipment equipment) {
         Equipment savedEquipment = equipmentService.addNewEquipment(equipment);
         return savedEquipment;
     }
 
-    @GetMapping("/findAll")
+    @GetMapping("/get/")
     public List<Equipment> getAllEquipments(@RequestParam(name = "description", required = false) String description) {
         if (!StringUtils.isEmpty(description)) {
             return equipmentService.getEquipmentByDescription(description);
@@ -32,7 +32,7 @@ public class EquipmentController {
         return equipmentService.getAllEquipments();
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/get/{id}")
     public Equipment getEquipmentById(@PathVariable("id") Long id) {
         return equipmentService.getEquipmentById(id);
     }

@@ -19,13 +19,13 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @PostMapping("/create")
+    @PostMapping("/add/")
     public Department addNewDepartment(@RequestBody Department department) {
         Department savedDepartment = departmentService.addNewDepartment(department);
         return savedDepartment;
     }
 
-    @GetMapping("/findAll")
+    @GetMapping("/get/")
     public List<Department> getAllDepartments(@RequestParam(name = "address", required = false) String address) {
         if (!StringUtils.isEmpty(address)) {
             return departmentService.getDepartmentByAddress(address);
@@ -33,7 +33,7 @@ public class DepartmentController {
         return departmentService.getAllDepartments();
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/get/{id}")
     public Department getDepartmentById(@PathVariable("id") Long id) {
         return departmentService.getDepartmentById(id);
     }

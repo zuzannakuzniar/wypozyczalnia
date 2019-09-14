@@ -38,17 +38,17 @@ import java.util.List;
             return employeeService.getAllEmployees();
         }
 
-        @GetMapping("{id}")
+        @GetMapping("/get/{id}")
         public Employee getEmployeeById(@PathVariable("id") Long id) {
             return employeeService.getEmployeeById(id);
         }
 
-        @PutMapping("{id}")
+        @PutMapping("/update/{id}")
         public Employee updateEmployeeById(@PathVariable("id") Long id, @RequestBody Employee employeeForm) {
             return employeeService.updateEmployeeById(id, employeeForm);
         }
 
-        @DeleteMapping("{id}")
+        @DeleteMapping("/delete/{id}")
         public void deleteEmployeeById(@PathVariable("id") Long id) {
             employeeService.deleteEmployeeById(id);
         }

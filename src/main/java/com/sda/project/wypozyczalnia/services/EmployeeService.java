@@ -5,10 +5,13 @@ import com.sda.project.wypozyczalnia.extras.Role;
 import com.sda.project.wypozyczalnia.model.Employee;
 import com.google.common.collect.Lists;
 import org.hibernate.ObjectNotFoundException;
+import org.springframework.stereotype.Service;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class EmployeeService {
 
     private List<Employee> employees = new ArrayList<>();
@@ -18,7 +21,7 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public List<Employee> listOfEmployees(){
+    public List<Employee> getAllEmployees(){
         return Lists.newArrayList(employeeRepository.findAll());
     }
 
@@ -26,7 +29,7 @@ public class EmployeeService {
         return employeeRepository.save(createNewEmployee(employee));
     }
 
-    public Employee findEmployeeById(Long id){
+    public Employee getEmployeeById(Long id){
         return employeeRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id,Employee.class.getName()));
     }
 

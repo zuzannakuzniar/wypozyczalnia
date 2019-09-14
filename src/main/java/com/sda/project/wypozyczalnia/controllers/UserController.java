@@ -19,13 +19,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/create")
+    @PostMapping("/add/")
     public User addNewUser(@RequestBody User userForm) {
         User savedUser = userService.addNewUser(userForm);
         return savedUser;
     }
 
-    @GetMapping("/findAll")
+    @GetMapping("/get/")
     public List<User> getAllUsers(@RequestParam(name = "name", required = false) String name) {
         if (!StringUtils.isEmpty(name)) {
             return userService.getUserByName(name);
@@ -33,7 +33,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/get/{id}")
     public User getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }

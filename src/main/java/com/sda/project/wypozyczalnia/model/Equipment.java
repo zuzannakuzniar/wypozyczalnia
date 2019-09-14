@@ -13,10 +13,10 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String decription;
+    private String description;
 
-    public Equipment(String decription) {
-        this.decription = decription;
+    public Equipment(String description) {
+        this.description = description;
     }
 
     public Equipment() {
@@ -30,19 +30,19 @@ public class Equipment {
         this.id = id;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public void setDescription(String decription) {
+        this.description = description;
     }
 
-    public String getDecription() {
-        return decription;
+    public String getDescription() {
+        return description;
     }
 
     @Override
     public String toString() {
         return "Equipment{" +
                 "id=" + id +
-                ", decription='" + decription + '\'' +
+                ", decription='" + description + '\'' +
                 '}';
     }
 }
