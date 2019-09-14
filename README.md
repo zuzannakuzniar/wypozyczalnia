@@ -15,11 +15,18 @@
 - Added Role: PRACOWNIK, MANAGER;
 - added Colors;
 - upgraded Status, Car, User;
-- added Privileges [testing];
+- added Privileges;
 - fixed ERROR on EmployeeRepository, EmployeeService methods;
-- added Orders [testing];
+- added Orders;
 
 ## Changelog v1.2.0
 ##### 12.09.2019
 - Added all models by presentation of project;
 - Added CarController and antMatchers in WebSecurityConfig;
+
+## Changelog v1.3.0
+##### 14.09.2019
+- Added all Services, Repositories and Controllers;
+- Fixed all Controllers (problem with endPoints);
+- Added reference in Address, User, Department and Rental;
+- Added Swagger [IN-TEST];
