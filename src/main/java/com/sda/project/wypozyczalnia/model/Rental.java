@@ -20,12 +20,13 @@ public class Rental {
     @OneToMany
     private List<Department> departments = new ArrayList<>();
 
-    public Rental(String name, String domain, String contactAddress, String owner, String logo) {
+    public Rental(String name, String domain, String contactAddress, String owner, String logo, List<Department> departments) {
         this.name = name;
         this.domain = domain;
         this.contactAddress = contactAddress;
         this.owner = owner;
         this.logo = logo;
+        this.departments = departments;
     }
 
     public Rental() {
@@ -96,6 +97,7 @@ public class Rental {
                 ", contactAddress='" + contactAddress + '\'' +
                 ", owner='" + owner + '\'' +
                 ", logo='" + logo + '\'' +
+                ", departments=" + departments +
                 '}';
     }
 }

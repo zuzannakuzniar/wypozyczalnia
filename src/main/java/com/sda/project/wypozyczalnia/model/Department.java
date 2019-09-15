@@ -2,6 +2,8 @@ package com.sda.project.wypozyczalnia.model;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Department {
 
@@ -12,13 +14,17 @@ public class Department {
     @ManyToOne
     private Rental rental;
 
-    @OneToOne(mappedBy = "department")
+    @OneToOne
     private Address address;
 
     private String availableCarList;
 
-    public Department(Address address, String employeeList, String availableCarList) {
+    @OneToMany
+    private List<Employee> employees;
+
+    public Department(Address address, List<Employee> employees, String availableCarList) {
         this.address = address;
+        this.employees = employees;
         this.availableCarList = availableCarList;
     }
 
@@ -41,13 +47,12 @@ public class Department {
         this.address = address;
     }
 
-
-    public Rental getRental() {
-        return rental;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setRental(Rental rental) {
-        this.rental = rental;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public String getAvailableCarList() {
@@ -58,12 +63,22 @@ public class Department {
         this.availableCarList = availableCarList;
     }
 
+    public Rental getRental() {
+        return rental;
+    }
+
+    public void setRental(Rental rental) {
+        this.rental = rental;
+    }
+
     @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +
-                ", address='" + address + '\'' +
+                ", rental=" + rental +
+                ", address=" + address +
                 ", availableCarList='" + availableCarList + '\'' +
+                ", employees=" + employees +
                 '}';
     }
 }

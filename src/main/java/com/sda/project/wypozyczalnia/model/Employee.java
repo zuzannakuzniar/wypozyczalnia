@@ -18,9 +18,10 @@ public class Employee {
     @ManyToOne
     private Department department;
 
-    public Employee(String name, String surname, Role role){
+    public Employee(String name, String surname, Department department, Role role){
         this.name = name;
         this.surname = surname;
+        this.department = department;
         this.role = role;
     }
 
@@ -53,10 +54,6 @@ public class Employee {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Department getDepartment() {

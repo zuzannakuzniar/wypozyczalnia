@@ -48,6 +48,8 @@ public class DepartmentService {
                 .orElseThrow(() -> new ObjectNotFoundException(id, Department.class.getName()));
 
         foundDepartment.setAddress(department.getAddress());
+        foundDepartment.setAvailableCarList(department.getAvailableCarList());
+        foundDepartment.setEmployees(department.getEmployees());
 
         return departmentRepository.save(foundDepartment);
     }
