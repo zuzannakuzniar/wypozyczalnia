@@ -22,7 +22,6 @@ public class Car {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Basket basket;
 
     public Car(String brand, String model, double engine, String productionYear, Colors color, double mileage, Status status, double price) {

@@ -12,7 +12,6 @@ public class  Orders {
     private double summary;
 
     @ManyToOne
-    @JoinColumn(name = "orders_id", referencedColumnName = "id")
     private Basket basket;
 
     public Orders(double summary) {
