@@ -3,9 +3,7 @@ package com.sda.project.wypozyczalnia.model;
 import com.sda.project.wypozyczalnia.extras.Colors;
 import com.sda.project.wypozyczalnia.extras.Status;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Car {
@@ -22,6 +20,10 @@ public class Car {
     private double mileage;
     private Status status;
     private double price;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
+    private Basket basket;
 
     public Car(String brand, String model, double engine, String productionYear, Colors color, double mileage, Status status, double price) {
         this.brand = brand;

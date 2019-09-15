@@ -1,18 +1,19 @@
 package com.sda.project.wypozyczalnia.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Orders {
+public class  Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private double summary;
+
+    @ManyToOne
+    @JoinColumn(name = "orders_id", referencedColumnName = "id")
+    private Basket basket;
 
     public Orders(double summary) {
         this.summary = summary;

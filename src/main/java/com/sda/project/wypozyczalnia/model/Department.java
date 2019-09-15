@@ -1,9 +1,8 @@
 package com.sda.project.wypozyczalnia.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Department {
@@ -12,13 +11,22 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String address;
-    private String employeeList;
+    @ManyToOne
+    private Rental rental;
+
+    @OneToOne
+    private Address address;
+
+
+
     private String availableCarList;
 
-    public Department(String address, String employeeList, String availableCarList) {
+    @OneToMany
+    private List<Employee> employees;
+
+    public Department(Address address, List<Employee> employees, String availableCarList) {
         this.address = address;
-        this.employeeList = employeeList;
+        this.employees = employees;
         this.availableCarList = availableCarList;
     }
 
@@ -33,20 +41,21 @@ public class Department {
         this.id = id;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public String getEmployeeList() {
-        return employeeList;
+
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setEmployeeList(String employeeList) {
-        this.employeeList = employeeList;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public String getAvailableCarList() {
@@ -61,9 +70,10 @@ public class Department {
     public String toString() {
         return "Department{" +
                 "id=" + id +
-                ", address='" + address + '\'' +
-                ", employeeList='" + employeeList + '\'' +
+                ", rental=" + rental +
+                ", address=" + address +
                 ", availableCarList='" + availableCarList + '\'' +
+                ", employees=" + employees +
                 '}';
     }
 }

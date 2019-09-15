@@ -49,7 +49,7 @@ public class DepartmentService {
 
         foundDepartment.setAddress(department.getAddress());
         foundDepartment.setAvailableCarList(department.getAvailableCarList());
-        foundDepartment.setEmployeeList(department.getEmployeeList());
+        foundDepartment.setEmployees(department.getEmployees());
 
         return departmentRepository.save(foundDepartment);
     }

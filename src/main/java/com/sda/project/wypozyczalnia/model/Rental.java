@@ -1,9 +1,8 @@
 package com.sda.project.wypozyczalnia.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Rental {
@@ -17,15 +16,17 @@ public class Rental {
     private String contactAddress;
     private String owner;
     private String logo;
-    private String departmentList;
 
-    public Rental(String name, String domain, String contactAddress, String owner, String logo, String departmentList) {
+    @OneToMany
+    private List<Department> departments = new ArrayList<>();
+
+    public Rental(String name, String domain, String contactAddress, String owner, String logo, List<Department> departments) {
         this.name = name;
         this.domain = domain;
         this.contactAddress = contactAddress;
         this.owner = owner;
         this.logo = logo;
-        this.departmentList = departmentList;
+        this.departments = departments;
     }
 
     public Rental() {
@@ -79,12 +80,12 @@ public class Rental {
         this.logo = logo;
     }
 
-    public String getDepartmentList() {
-        return departmentList;
+    public List<Department> getDepartments() {
+        return departments;
     }
 
-    public void setDepartmentList(String departmentList) {
-        this.departmentList = departmentList;
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
     }
 
     @Override
@@ -96,7 +97,7 @@ public class Rental {
                 ", contactAddress='" + contactAddress + '\'' +
                 ", owner='" + owner + '\'' +
                 ", logo='" + logo + '\'' +
-                ", departmentList='" + departmentList + '\'' +
+                ", departments=" + departments +
                 '}';
     }
 }

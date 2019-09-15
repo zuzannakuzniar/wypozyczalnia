@@ -2,10 +2,7 @@ package com.sda.project.wypozyczalnia.model;
 
 import com.sda.project.wypozyczalnia.extras.Role;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -17,9 +14,11 @@ public class Employee {
     private String name;
     private String surname;
     private Role role;
-    private String department;
 
-    public Employee(String name, String surname, String department, Role role){
+    @ManyToOne
+    private Department department;
+
+    public Employee(String name, String surname, Department department, Role role){
         this.name = name;
         this.surname = surname;
         this.department = department;
@@ -57,11 +56,11 @@ public class Employee {
         this.role = role;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
