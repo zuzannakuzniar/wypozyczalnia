@@ -29,4 +29,8 @@
 - Added all Services, Repositories and Controllers;
 - Fixed all Controllers (problem with endPoints);
 - Added reference in Address, User, Department and Rental;
-- Added Swagger [IN-TEST];
+- Added Swagger;
+
+##Changelog v1.4.0
+##### 15.09.2019
+- upgraded springboot from 2.0.4 to 2.1.8
