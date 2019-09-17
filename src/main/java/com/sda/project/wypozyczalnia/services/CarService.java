@@ -46,11 +46,13 @@ public class CarService {
         Car car1 = carRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Car.class.getName()));
         car1.setBrand(car.getBrand());
-        car1.setEngine(car.getEngine());
-//        car1.setEquipment(car.getEquipment());
         car1.setModel(car.getModel());
-        car1.setPrice(car.getPrice());
+        car1.setEngine(car.getEngine());
+        car1.setProductionYear(car.getProductionYear());
         car1.setColor(car.getColor());
+        car1.setMileage(car.getMileage());
+        car1.setStatus(car.getStatus());
+        car1.setPrice(car.getPrice());
         return car1;
     }
     public Car deleteCarById (Long id) {
