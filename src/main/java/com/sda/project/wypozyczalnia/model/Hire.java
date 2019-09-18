@@ -93,7 +93,9 @@ public class Hire {
         return "Hire{" +
                 "id=" + id +
                 ", employee='" + employee + '\'' +
-                ", date='" + date + '\'' +
+                ", date=" + date +
+                ", time=" + time +
+                ", timestamp=" + timestamp +
                 ", reservation='" + reservation + '\'' +
                 ", comments='" + comments + '\'' +
                 '}';

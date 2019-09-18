@@ -135,8 +135,10 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
-                ", date='" + date + '\'' +
-                ", user='" + user + '\'' +
+                ", date=" + date +
+                ", time=" + time +
+                ", timestamp=" + timestamp +
+                ", user=" + user +
                 ", car='" + car + '\'' +
                 ", startReservation='" + startReservation + '\'' +
                 ", endReservation='" + endReservation + '\'' +

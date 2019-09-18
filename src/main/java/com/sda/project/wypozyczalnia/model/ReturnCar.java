@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 public class ReturnCar {
@@ -13,15 +16,24 @@ public class ReturnCar {
     private Long id;
 
     private String employee;
-    private String returnDate;
+    private java.sql.Date returnDate;
+
     private String reservation;
     private String supplement;
     private String comments;
 
-    public ReturnCar(Long id, String employee, String returnDate, String reservation, String supplement, String comments) {
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public ReturnCar(Long id, String employee, Date returnDate, String reservation, String supplement, String comments) {
         this.id = id;
         this.employee = employee;
-        this.returnDate = returnDate;
+        this.returnDate=returnDate;
         this.reservation = reservation;
         this.supplement = supplement;
         this.comments = comments;
@@ -46,13 +58,7 @@ public class ReturnCar {
         this.employee = employee;
     }
 
-    public String getReturnDate() {
-        return returnDate;
-    }
 
-    public void setReturnDate(String returnDate) {
-        this.returnDate = returnDate;
-    }
 
     public String getReservation() {
         return reservation;
@@ -83,7 +89,7 @@ public class ReturnCar {
         return "ReturnCar{" +
                 "id=" + id +
                 ", employee='" + employee + '\'' +
-                ", returnDate='" + returnDate + '\'' +
+                ", returnDate=" + returnDate +
                 ", reservation='" + reservation + '\'' +
                 ", supplement='" + supplement + '\'' +
                 ", comments='" + comments + '\'' +

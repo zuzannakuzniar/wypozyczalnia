@@ -9,8 +9,6 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   /* @OneToOne(mappedBy = "address")
-    private Department department;*/
 
     private String city;
     private String street;
@@ -47,19 +45,11 @@ public class Address {
         this.street = street;
     }
 
-    /*public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }*/
 
     @Override
     public String toString() {
         return "Address{" +
                 "id=" + id +
-                /*", department=" + department +*/
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
                 '}';
