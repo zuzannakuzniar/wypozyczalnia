@@ -1,6 +1,9 @@
 package com.sda.project.wypozyczalnia.model;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 public class Reservation {
@@ -9,7 +12,33 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String date;
+    private java.sql.Date date;
+    private java.sql.Time time;
+    private java.sql.Timestamp timestamp;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
 
     @ManyToOne
     private User user;
@@ -21,8 +50,10 @@ public class Reservation {
     private String departmentReturn;
     private double price;
 
-    public Reservation(String date, User user, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
+    public Reservation(Date date, Time time, Timestamp timestamp, User user, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
         this.date = date;
+        this.time=time;
+        this.timestamp=timestamp;
         this.user = user;
         this.car = car;
         this.startReservation = startReservation;
@@ -43,13 +74,6 @@ public class Reservation {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public User getUser() {
         return user;

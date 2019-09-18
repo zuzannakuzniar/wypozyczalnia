@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 public class Hire {
@@ -13,14 +16,38 @@ public class Hire {
     private Long id;
 
     private String employee;
-    private String date;
+    private java.sql.Date date;
+    private java.sql.Time time;
+    private java.sql.Timestamp timestamp;
     private String reservation;
     private String comments;
 
-    public Hire(Long id, String employee, String date, String reservation, String comments) {
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public Hire(Long id, String employee, Date date,Time time,Timestamp timestamp, String reservation, String comments) {
         this.id = id;
         this.employee = employee;
         this.date = date;
+        this.time=time;
+        this.timestamp=timestamp;
         this.reservation = reservation;
         this.comments = comments;
     }
@@ -44,13 +71,6 @@ public class Hire {
         this.employee = employee;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getReservation() {
         return reservation;

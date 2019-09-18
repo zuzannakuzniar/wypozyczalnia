@@ -15,6 +15,7 @@ public class Department {
     private Rental rental;
 
     @OneToOne
+    @JoinColumn(name = "addressId")
     private Address address;
 
     private String availableCarList;
