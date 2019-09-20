@@ -2,8 +2,7 @@ package com.sda.project.wypozyczalnia.model;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
+
 
 @Entity
 public class Reservation {
@@ -13,8 +12,7 @@ public class Reservation {
     private Long id;
 
     private java.sql.Date date;
-    private java.sql.Time time;
-    private java.sql.Timestamp timestamp;
+
 
     public Date getDate() {
         return date;
@@ -24,21 +22,7 @@ public class Reservation {
         this.date = date;
     }
 
-    public Time getTime() {
-        return time;
-    }
 
-    public void setTime(Time time) {
-        this.time = time;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
 
    /* @ManyToOne
     private User user;*/
@@ -50,12 +34,11 @@ public class Reservation {
     private String departmentReturn;
     private double price;
 
-    public Reservation(Date date, Time time, Timestamp timestamp/*, User user*/, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
+    public Reservation(Date date/*, User user*/, Car car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
         this.date = date;
-        this.time=time;
-        this.timestamp=timestamp;
+
         /*this.user = user;*/
-        this.car = car;
+       /* this.car = car;*/
         this.startReservation = startReservation;
         this.endReservation = endReservation;
         this.departmentRent = departmentRent;
@@ -83,14 +66,15 @@ public class Reservation {
         this.user = user;
     }*/
 
-    public String getCar() {
+
+   /* public Car getCar() {
         return car;
     }
 
-    public void setCar(String car) {
+    public void setCar(Car car) {
         this.car = car;
     }
-
+*/
     public String getStartReservation() {
         return startReservation;
     }
@@ -136,8 +120,6 @@ public class Reservation {
         return "Reservation{" +
                 "id=" + id +
                 ", date=" + date +
-                ", time=" + time +
-                ", timestamp=" + timestamp +
                 /*", user=" + user +*/
                 ", car='" + car + '\'' +
                 ", startReservation='" + startReservation + '\'' +

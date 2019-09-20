@@ -13,11 +13,10 @@ public class Employee {
 
     private String name;
     private String surname;
-   /* @OneToOne
-    private Role role;*/
 
-   /* @ManyToOne
-    private Department department;*/
+
+    @ManyToOne
+    private Department department;
 
     public Employee(String name, String surname /*Department department*//*, Role role*/){
         this.name = name;
@@ -57,13 +56,13 @@ public class Employee {
         this.role = role;
     }*/
 
-    /*public Department getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
     public void setDepartment(Department department) {
         this.department = department;
-    }*/
+    }
 
     @Override
     public String toString() {
@@ -71,8 +70,7 @@ public class Employee {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-               /* ", role=" + role +*/
-                /*", department='" + department + '\'' +*/
+                ", department='" + department + '\'' +
                 '}';
     }
 }

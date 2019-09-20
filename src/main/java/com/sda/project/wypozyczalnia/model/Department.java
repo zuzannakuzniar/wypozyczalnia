@@ -11,8 +11,8 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /*@ManyToOne
-    private Rental rental;*/
+    @ManyToOne
+    private Rental rental;
 
     @OneToOne
     @JoinColumn(name = "addressId")
@@ -64,13 +64,13 @@ public class Department {
         this.availableCarList = availableCarList;
     }
 
-   /* public Rental getRental() {
+    public Rental getRental() {
         return rental;
     }
 
     public void setRental(Rental rental) {
         this.rental = rental;
-    }*/
+    }
 
     @Override
     public String toString() {

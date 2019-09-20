@@ -1,8 +1,8 @@
 package com.sda.project.wypozyczalnia.model;
 
-//import com.sda.project.wypozyczalnia.extras.Privileges;
 
-import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class User {
     private String dlsn;
     private String password;
 
-//    private Privileges privileges;
+
 
 
     public User(String name, String surname, String email, String dlsn, String password/*, Privileges privileges*/) {
@@ -95,24 +95,17 @@ public class User {
         this.reservation = reservation;
     }
 
-    //    public Privileges getPrivileges() {
-//        return privileges;
-//    }
-//
-//    public void setPrivileges(Privileges privileges) {
-//        this.privileges = privileges;
-//    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", reservation=" + reservation +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", dlsn='" + dlsn + '\'' +
                 ", password='" + password + '\'' +
-//                ", privileges=" + privileges +
                 '}';
     }
 }

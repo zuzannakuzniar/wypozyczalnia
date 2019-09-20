@@ -15,7 +15,7 @@ public class Car {
     private String brand;
     private String model;
     private double engine;
-    private String productionYear;
+    private int productionYear;
     private String color;
     private double mileage;
     private double price;
@@ -42,7 +42,7 @@ public class Car {
     /*@ManyToOne
     private Basket basket;*/
 
-    public Car(String brand, String model, double engine, String productionYear, String color, double mileage,
+    public Car(String brand, String model, double engine, int productionYear, String color, double mileage,
                 double price, Equipment equipment) {
         this.brand = brand;
         this.model = model;
@@ -98,11 +98,11 @@ public class Car {
         this.id = id;
     }
 
-    public String getProductionYear() {
+    public int getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(String productionYear) {
+    public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
     }
 
