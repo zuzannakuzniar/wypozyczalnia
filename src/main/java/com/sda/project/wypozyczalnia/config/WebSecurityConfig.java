@@ -1,85 +1,71 @@
 package com.sda.project.wypozyczalnia.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalAuthentication
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        auth.inMemoryAuthentication()
-                .withUser("user").password(encoder.encode("pass")).roles("USER")
-        .and()
-        .withUser("admin").password(encoder.encode("pass")).roles("ADMIN");
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
     }
 
     @Override
-    protected void configure(final HttpSecurity http) throws Exception {
-        http
-                // allows swagger public access
-                .authorizeRequests()
-                .antMatchers("/", "/csrf", "/swagger-ui.html", "/webjars/**", "/v2/controllers-docs**", "/swagger-resources/**").permitAll()
-                .and()
-                // allows h2 public access
-                .authorizeRequests()
-                .antMatchers("/wypozyczalnia/**", "/").permitAll()
-                .and().headers().frameOptions().sameOrigin()
-                .and()
-                // back to app endpoints configuration
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/users/*").permitAll()
-                .antMatchers(HttpMethod.PUT, "/users/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/users/").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/users/*").hasRole("ADMIN")
-                .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/cars/*").permitAll()
-                .antMatchers(HttpMethod.PUT, "/cars/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/cars/").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/cars/*").hasRole("ADMIN")
-                .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/departments/*").permitAll()
-                .antMatchers(HttpMethod.PUT, "/departments/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/departments/").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/departments/*").hasRole("ADMIN")
-                .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/employee/*").permitAll()
-                .antMatchers(HttpMethod.PUT, "/employee/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/employee/").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/employee/*").hasRole("ADMIN")
-                .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/equipments/*").permitAll()
-                .antMatchers(HttpMethod.PUT, "/equipments/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/equipments/").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/equipments/*").hasRole("ADMIN")
-                .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/hire/*").permitAll()
-                .antMatchers(HttpMethod.PUT, "/hire/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/hire/").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/hire/*").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                // allows POST, PUT, DELETE requests from outside (postman)
-                .csrf().disable()
-                // selects basic (header) authentication and prevents session from being created
-                .httpBasic()
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.
+                authorizeRequests()
+                // .antMatchers("/").permitAll()
+                .antMatchers(AUTH_LIST).permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+                .authenticated().and().csrf().disable().formLogin()
+                .usernameParameter("login")
+                .passwordParameter("password")
+                .and().logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/").and().exceptionHandling()
+                .accessDeniedPage("/access-denied");
     }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth)
+            throws Exception {
+
+        auth.
+                jdbcAuthentication()
+                .usersByUsernameQuery("select login, password, active from user where login=?")
+                .authoritiesByUsernameQuery("select u.login, r.role from user u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.login=?")
+                .dataSource(dataSource)
+                .passwordEncoder(bCryptPasswordEncoder);
+    }
+
+    private static final String[] AUTH_LIST = {
+            // -- swagger ui
+            "**/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v2/api-docs",
+            "/webjars/**"
+    };
 }
