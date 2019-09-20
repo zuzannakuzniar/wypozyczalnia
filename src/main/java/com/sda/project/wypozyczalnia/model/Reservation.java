@@ -1,6 +1,8 @@
 package com.sda.project.wypozyczalnia.model;
 
 import javax.persistence.*;
+import java.sql.Date;
+
 
 @Entity
 public class Reservation {
@@ -9,10 +11,21 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String date;
+    private java.sql.Date date;
 
-    @ManyToOne
-    private User user;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+
+
+   /* @ManyToOne
+    private User user;*/
 
     private String car;
     private String startReservation;
@@ -21,10 +34,11 @@ public class Reservation {
     private String departmentReturn;
     private double price;
 
-    public Reservation(String date, User user, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
+    public Reservation(Date date/*, User user*/, Car car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
         this.date = date;
-        this.user = user;
-        this.car = car;
+
+        /*this.user = user;*/
+       /* this.car = car;*/
         this.startReservation = startReservation;
         this.endReservation = endReservation;
         this.departmentRent = departmentRent;
@@ -43,30 +57,24 @@ public class Reservation {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
-    }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public User getUser() {
+   /* public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
+    }*/
 
-    public String getCar() {
+
+   /* public Car getCar() {
         return car;
     }
 
-    public void setCar(String car) {
+    public void setCar(Car car) {
         this.car = car;
     }
-
+*/
     public String getStartReservation() {
         return startReservation;
     }
@@ -111,8 +119,8 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
-                ", date='" + date + '\'' +
-                ", user='" + user + '\'' +
+                ", date=" + date +
+                /*", user=" + user +*/
                 ", car='" + car + '\'' +
                 ", startReservation='" + startReservation + '\'' +
                 ", endReservation='" + endReservation + '\'' +

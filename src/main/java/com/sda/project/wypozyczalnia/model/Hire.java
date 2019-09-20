@@ -1,9 +1,9 @@
 package com.sda.project.wypozyczalnia.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 public class Hire {
@@ -12,15 +12,24 @@ public class Hire {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String employee;
-    private String date;
-    private String reservation;
+    @OneToOne
+    private Employee employee;
+    private java.sql.Date date;
+    @OneToOne
+    private Reservation reservation;
     private String comments;
 
-    public Hire(Long id, String employee, String date, String reservation, String comments) {
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+
+
+    public Hire(Long id, Employee employee, Date date, Reservation reservation, String comments) {
         this.id = id;
         this.employee = employee;
         this.date = date;
+
         this.reservation = reservation;
         this.comments = comments;
     }
@@ -36,27 +45,23 @@ public class Hire {
         this.id = id;
     }
 
-    public String getEmployee() {
+    public Employee getEmployee() {
         return employee;
     }
 
-    public void setEmployee(String employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getReservation() {
+    public Reservation getReservation() {
         return reservation;
     }
 
-    public void setReservation(String reservation) {
+    public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
 
@@ -72,8 +77,8 @@ public class Hire {
     public String toString() {
         return "Hire{" +
                 "id=" + id +
-                ", employee='" + employee + '\'' +
-                ", date='" + date + '\'' +
+                ", employee=" + employee +
+                ", date=" + date +
                 ", reservation='" + reservation + '\'' +
                 ", comments='" + comments + '\'' +
                 '}';

@@ -1,7 +1,7 @@
 package com.sda.project.wypozyczalnia.controllers;
 
-import com.tplesniak.sda.springboot.template.domain.Event;
-import com.tplesniak.sda.springboot.template.service.EventService;
+import com.sda.project.wypozyczalnia.model.Event;
+import com.sda.project.wypozyczalnia.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

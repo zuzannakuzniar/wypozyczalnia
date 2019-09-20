@@ -15,6 +15,7 @@ public class Department {
     private Rental rental;
 
     @OneToOne
+    @JoinColumn(name = "addressId")
     private Address address;
 
     private String availableCarList;
@@ -75,7 +76,7 @@ public class Department {
     public String toString() {
         return "Department{" +
                 "id=" + id +
-                ", rental=" + rental +
+                /*", rental=" + rental +*/
                 ", address=" + address +
                 ", availableCarList='" + availableCarList + '\'' +
                 ", employees=" + employees +

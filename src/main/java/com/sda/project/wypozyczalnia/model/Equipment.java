@@ -13,9 +13,20 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String type;
+
     private String description;
 
-    public Equipment(String description) {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Equipment(String type, String description) {
+        this.type=type;
         this.description = description;
     }
 
@@ -42,7 +53,8 @@ public class Equipment {
     public String toString() {
         return "Equipment{" +
                 "id=" + id +
-                ", decription='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

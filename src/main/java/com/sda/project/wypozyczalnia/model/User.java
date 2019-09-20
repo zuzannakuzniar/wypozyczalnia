@@ -1,12 +1,15 @@
 package com.sda.project.wypozyczalnia.model;
 
-//import com.sda.project.wypozyczalnia.extras.Privileges;
-
-import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -18,26 +21,34 @@ public class User {
     @OneToMany
     private List<Reservation> reservation = new ArrayList<>();
 
+    @Size(max = 30)
     private String name;
+
     private String surname;
-    private String email;
     private String dlsn;
+
+    @Email
+    private String email;
+
+    @NotBlank
+    private String login;
+
+    @JsonIgnore
+    @Length(min = 5, message = "*Your password must have at least 5 characters")
+    @NotBlank(message = "*Please provide your password")
     private String password;
 
-//    private Privileges privileges;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "participants")
+    List<Event> events;
 
+    @JsonIgnore
+    private int active;
 
-    public User(String name, String surname, String email, String dlsn, String password/*, Privileges privileges*/) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.dlsn = dlsn;
-        this.password = password;
-//        this.privileges = privileges;
-    }
-
-    public User() {
-    }
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
     public Long getId() {
         return id;
@@ -95,24 +106,52 @@ public class User {
         this.reservation = reservation;
     }
 
-    //    public Privileges getPrivileges() {
-//        return privileges;
-//    }
-//
-//    public void setPrivileges(Privileges privileges) {
-//        this.privileges = privileges;
-//    }
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", reservation=" + reservation +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
                 ", dlsn='" + dlsn + '\'' +
+                ", email='" + email + '\'' +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-//                ", privileges=" + privileges +
+                ", events=" + events +
+                ", active=" + active +
+                ", roles=" + roles +
                 '}';
     }
 }

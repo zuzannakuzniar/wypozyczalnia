@@ -1,11 +1,18 @@
 package com.sda.project.wypozyczalnia.services;
 
 import com.google.common.collect.Lists;
+import com.sda.project.wypozyczalnia.dao.RoleRepository;
 import com.sda.project.wypozyczalnia.dao.UserRepository;
 
+import com.sda.project.wypozyczalnia.model.Role;
 import com.sda.project.wypozyczalnia.model.User;
 import org.hibernate.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -13,9 +20,24 @@ import java.util.List;
 public class UserService {
 
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    @Autowired
+    public UserService(UserRepository userRepository,
+                       RoleRepository roleRepository,
+                       BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+    public void saveUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        Role userRole = roleRepository.findByRole("ADMIN");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        user.setActive(1);
+        userRepository.save(user);
     }
 
     public User addNewUser(User userForm) {

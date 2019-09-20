@@ -1,7 +1,7 @@
 package com.sda.project.wypozyczalnia.services;
 
 import com.sda.project.wypozyczalnia.dao.EmployeeRepository;
-import com.sda.project.wypozyczalnia.extras.Role;
+
 import com.sda.project.wypozyczalnia.model.Department;
 import com.sda.project.wypozyczalnia.model.Employee;
 import com.google.common.collect.Lists;
@@ -45,8 +45,8 @@ public class EmployeeService {
     public Employee updateEmployeeById(Long id, Employee employee){
         Employee foundEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Employee.class.getName()));
-        foundEmployee.setRole(employee.getRole());
-        foundEmployee.setDepartment(employee.getDepartment());
+        /*foundEmployee.setRole(employee.getRole());*/
+        /*foundEmployee.setDepartment(employee.getDepartment());*/
         foundEmployee.setSurname(employee.getSurname());
         foundEmployee.setName(employee.getName());
         return employeeRepository.save(foundEmployee);
@@ -57,8 +57,8 @@ public class EmployeeService {
         Employee result = new Employee();
         result.setName(employee.getName());
         result.setSurname(employee.getSurname());
-        result.setDepartment(employee.getDepartment());
-        result.setRole(Role.PRACOWNIK);
+        /*result.setDepartment(employee.getDepartment());*/
+        /*result.setRole(Role.PRACOWNIK);*/
 
         return result;
     }
@@ -71,11 +71,10 @@ public class EmployeeService {
         return employeeRepository.findBySurname(surname);
     }
 
-    public List<Employee> findEmployeeByRole(Role role){
-        return employeeRepository.findByRole(role);
+ /*   public List<Employee> findEmployeeByRole(Role role){
+        return employeeRepository.findByRole(role);*/
     }
     
-    public List<Employee> findEmployeeByDepartment(Department department){
+  /*  public List<Employee> findEmployeeByDepartment(Department department){
         return employeeRepository.findByDepartment(department);
-    }
-}
+    }*/

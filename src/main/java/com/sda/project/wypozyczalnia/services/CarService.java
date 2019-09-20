@@ -51,7 +51,6 @@ public class CarService {
         car1.setProductionYear(car.getProductionYear());
         car1.setColor(car.getColor());
         car1.setMileage(car.getMileage());
-        car1.setStatus(car.getStatus());
         car1.setPrice(car.getPrice());
         return car1;
     }
@@ -71,7 +70,6 @@ public class CarService {
         result.setProductionYear(car.getProductionYear());
         result.setColor(car.getColor());
         result.setMileage(car.getMileage());
-        result.setStatus(car.getStatus());
         result.setPrice(car.getPrice());
         return result;
     }

@@ -1,6 +1,6 @@
 package com.sda.project.wypozyczalnia.model;
 
-import com.sda.project.wypozyczalnia.extras.Role;
+
 
 import javax.persistence.*;
 
@@ -13,16 +13,16 @@ public class Employee {
 
     private String name;
     private String surname;
-    private Role role;
+
 
     @ManyToOne
     private Department department;
 
-    public Employee(String name, String surname, Department department, Role role){
+    public Employee(String name, String surname /*Department department*//*, Role role*/){
         this.name = name;
         this.surname = surname;
-        this.department = department;
-        this.role = role;
+       /* this.department = department;*/
+       /* this.role = role;*/
     }
 
     public Employee() {
@@ -48,13 +48,13 @@ public class Employee {
         this.surname = surname;
     }
 
-    public Role getRole() {
+    /*public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
-    }
+    }*/
 
     public Department getDepartment() {
         return department;
@@ -70,7 +70,6 @@ public class Employee {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", role=" + role +
                 ", department='" + department + '\'' +
                 '}';
     }
