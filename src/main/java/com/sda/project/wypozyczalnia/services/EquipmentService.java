@@ -55,6 +55,7 @@ public class EquipmentService {
     private Equipment createNewEquipment(Equipment equipment) {
 
         Equipment result = new Equipment();
+        result.setType(equipment.getType());
 
         result.setDescription(equipment.getDescription());
 

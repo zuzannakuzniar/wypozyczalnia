@@ -1,7 +1,7 @@
 package com.sda.project.wypozyczalnia.controllers;
 
 
-import com.sda.project.wypozyczalnia.extras.Role;
+
 import com.sda.project.wypozyczalnia.model.Department;
 import com.sda.project.wypozyczalnia.model.Employee;
 import com.sda.project.wypozyczalnia.services.EmployeeService;
@@ -51,15 +51,15 @@ public class EmployeeController {
         return employeeService.findEmployeeBySurname(surname);
     }
 
-    @GetMapping("{role}")
+    /*@GetMapping("{role}")
     public List<Employee> getEmployeesByRole(@PathVariable("role") Role role){
         return employeeService.findEmployeeByRole(role);
-    }
+    }*/
 
-    @GetMapping("{department}")
+   /* @GetMapping("{department}")
     public List<Employee> getEmployeesByDepartments(@PathVariable("department") Department department){
         return employeeService.findEmployeeByDepartment(department);
-    }
+    }*/
 
     @PutMapping("{id}")
     public Employee updateEmployeeById(@PathVariable("id") Long id, @RequestBody Employee employeeForm) {

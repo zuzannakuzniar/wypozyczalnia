@@ -40,8 +40,8 @@ public class Reservation {
         this.timestamp = timestamp;
     }
 
-    @ManyToOne
-    private User user;
+   /* @ManyToOne
+    private User user;*/
 
     private String car;
     private String startReservation;
@@ -50,11 +50,11 @@ public class Reservation {
     private String departmentReturn;
     private double price;
 
-    public Reservation(Date date, Time time, Timestamp timestamp, User user, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
+    public Reservation(Date date, Time time, Timestamp timestamp/*, User user*/, String car, String startReservation, String endReservation, String departmentRent, String departmentReturn, double price) {
         this.date = date;
         this.time=time;
         this.timestamp=timestamp;
-        this.user = user;
+        /*this.user = user;*/
         this.car = car;
         this.startReservation = startReservation;
         this.endReservation = endReservation;
@@ -75,13 +75,13 @@ public class Reservation {
     }
 
 
-    public User getUser() {
+   /* public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
+    }*/
 
     public String getCar() {
         return car;
@@ -138,7 +138,7 @@ public class Reservation {
                 ", date=" + date +
                 ", time=" + time +
                 ", timestamp=" + timestamp +
-                ", user=" + user +
+                /*", user=" + user +*/
                 ", car='" + car + '\'' +
                 ", startReservation='" + startReservation + '\'' +
                 ", endReservation='" + endReservation + '\'' +

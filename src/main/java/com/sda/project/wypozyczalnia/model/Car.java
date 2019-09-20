@@ -1,7 +1,7 @@
 package com.sda.project.wypozyczalnia.model;
 
-import com.sda.project.wypozyczalnia.extras.Colors;
-import com.sda.project.wypozyczalnia.extras.Status;
+
+
 
 import javax.persistence.*;
 
@@ -16,23 +16,43 @@ public class Car {
     private String model;
     private double engine;
     private String productionYear;
-    private Colors color;
+    private String color;
     private double mileage;
-    private Status status;
     private double price;
 
-    @ManyToOne
-    private Basket basket;
+    @OneToOne
+    private Equipment equipment;
 
-    public Car(String brand, String model, double engine, String productionYear, Colors color, double mileage, Status status, double price) {
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
+    }
+
+   /* *//*public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;*//*
+    }*/
+
+    /*@ManyToOne
+    private Basket basket;*/
+
+    public Car(String brand, String model, double engine, String productionYear, String color, double mileage,
+                double price, Equipment equipment) {
         this.brand = brand;
         this.model = model;
         this.engine = engine;
         this.productionYear = productionYear;
         this.color = color;
         this.mileage = mileage;
-        this.status = status;
+
         this.price = price;
+        this.equipment=equipment;
     }
 
     public Car() {
@@ -86,11 +106,11 @@ public class Car {
         this.productionYear = productionYear;
     }
 
-    public Colors getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Colors color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -102,13 +122,7 @@ public class Car {
         this.mileage = mileage;
     }
 
-    public Status getStatus() {
-        return status;
-    }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 
     @Override
     public String toString() {
@@ -120,8 +134,9 @@ public class Car {
                 ", productionYear='" + productionYear + '\'' +
                 ", color=" + color +
                 ", mileage=" + mileage +
-                ", status=" + status +
                 ", price=" + price +
+                ", equipment=" + equipment +
+               /* ", basket=" + basket +*/
                 '}';
-    }
+    } //tu ewentnualnei usunac basket
 }

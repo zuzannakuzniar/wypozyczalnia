@@ -11,8 +11,8 @@ public class  Orders {
 
     private double summary;
 
-    @ManyToOne
-    private Basket basket;
+  /*  @ManyToOne
+    private Basket basket;*/
 
     public Orders(double summary) {
         this.summary = summary;
@@ -36,4 +36,18 @@ public class  Orders {
     public void setSummary(double summary) {
         this.summary = summary;
     }
+
+    public Orders(double summary, Basket basket) {
+        this.summary = summary;
+        /*this.basket = basket;*/
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", summary=" + summary +
+                /*", basket=" + basket +*/
+                '}';
+    } // tu ewentualnie usunac basket
 }

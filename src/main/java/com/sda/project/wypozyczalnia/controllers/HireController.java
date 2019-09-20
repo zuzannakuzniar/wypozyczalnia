@@ -1,6 +1,8 @@
 package com.sda.project.wypozyczalnia.controllers;
 
+import com.sda.project.wypozyczalnia.model.Hire;
 import com.sda.project.wypozyczalnia.model.User;
+import com.sda.project.wypozyczalnia.services.HireService;
 import com.sda.project.wypozyczalnia.services.UserService;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -13,39 +15,39 @@ import java.util.List;
 @RestController
 @RequestMapping("/hire/")
 public class HireController {
-    private UserService userService;
+    private HireService hireService;
 
-    public HireController(UserService userService) {
-        this.userService = userService;
+    public HireController(HireService hireService) {
+        this.hireService = hireService;
     }
 
-    @PostMapping("/add/")
-    public User addNewUser(@RequestBody User userForm) {
-        User savedUser = userService.addNewUser(userForm);
-        return savedUser;
+    @PostMapping()
+    public Hire addNewHire(@RequestBody Hire hireForm) {
+        Hire savedHire = hireService.addNewHire(hireForm);
+        return savedHire;
     }
 
-    @GetMapping("/get/")
-    public List<User> getAllUsers(@RequestParam(name = "name", required = false) String name) {
-        if (!StringUtils.isEmpty(name)) {
-            return userService.getUserByName(name);
-        }
-        return userService.getAllUsers();
+    @GetMapping()
+    public List<Hire> getAllHires() {
+        return hireService.getAllHires();
     }
 
-    @GetMapping("/get/{id}")
-    public User getUserById(@PathVariable("id") Long id) {
-        return userService.getUserById(id);
+    @GetMapping("/{id}")
+    public Hire getOneHireById(@PathVariable("id") Long id) {
+        return hireService.getOneHireById(id);
     }
 
-    @PutMapping("/update/{id}")
-    public User updateUser(@PathVariable("id") Long id, @RequestBody User userForm) {
-        return userService.updateUserById(id, userForm);
+
+
+
+    @PutMapping("/{id}")
+    public Hire updateHireById(@PathVariable("id") Long id, @RequestBody Hire hireForm) {
+        return hireService.updateHireById(id, hireForm);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUserById(id);
+    @DeleteMapping("/{id}")
+    public void deleteHireById(@PathVariable("id") Long id) {
+        hireService.deleteHireById(id);
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
