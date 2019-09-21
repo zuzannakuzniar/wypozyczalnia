@@ -34,14 +34,14 @@ public class UserService {
 
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByRole("USER");
+        Role userRole = roleRepository.findByRole("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         user.setActive(1);
         userRepository.save(user);
     }
 
     public User addNewUser(User userForm) {
-        return userRepository.save(createNewUser(userForm));
+        return userRepository.save(userForm);
     }
 
     public List<User> getUserByName(String name) {
@@ -78,17 +78,17 @@ public class UserService {
         return userRepository.save(foundUser);
     }
 
-    private User createNewUser(User userForm) {
-
-        User result = new User();
-        result.setName(userForm.getName());
-        result.setSurname(userForm.getSurname());
-        result.setEmail(userForm.getEmail());
-        result.setDlsn(userForm.getDlsn());
-        result.setPassword(userForm.getPassword());
-
-        return result;
-    }
+//    private User createNewUser(User userForm) {
+//
+//        User result = new User();
+//        result.setName(userForm.getName());
+//        result.setSurname(userForm.getSurname());
+//        result.setEmail(userForm.getEmail());
+//        result.setDlsn(userForm.getDlsn());
+//        result.setPassword(userForm.getPassword());
+//
+//        return result;
+//    }
 }
 
 

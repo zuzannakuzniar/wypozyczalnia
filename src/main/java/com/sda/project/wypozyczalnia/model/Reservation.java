@@ -12,7 +12,7 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private java.sql.Date date;
+    private Date date;
 
 
     public Date getDate() {

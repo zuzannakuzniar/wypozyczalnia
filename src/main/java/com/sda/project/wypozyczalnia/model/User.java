@@ -30,10 +30,9 @@ public class User {
     @Email
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Podaj login")
     private String login;
 
-    @JsonIgnore
     @Length(min = 5, message = "*Your password must have at least 5 characters")
     @NotBlank(message = "*Please provide your password")
     private String password;
