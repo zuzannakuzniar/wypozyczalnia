@@ -22,11 +22,12 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-    @PreAuthorize("hasRole('ROLE_USER')or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('USER')or hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<List<Event>> findAll() {
         return ResponseEntity.ok(eventService.getEvents());
     }
+
     @PreAuthorize("hasRole('ROLE_USER')or hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/{id}")
     public ResponseEntity<Event> findOne(@PathVariable Long id) {
