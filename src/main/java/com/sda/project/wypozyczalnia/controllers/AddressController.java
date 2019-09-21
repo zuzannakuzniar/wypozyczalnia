@@ -31,12 +31,12 @@ public class AddressController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Address getOneAddressById(@PathVariable("id") Long id) {
         return addressService.getOneAddressById(id);
     }
 
-    @GetMapping("/{city}")
+    @GetMapping("/city/{city}")
     public List<Address> getCarsByBrand(@PathVariable("city") String city){
         return addressService.findByCity(city);
     }

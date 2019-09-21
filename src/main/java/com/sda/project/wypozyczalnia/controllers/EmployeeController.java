@@ -36,17 +36,17 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Employee getOneEmployeeById(@PathVariable("id") Long id) {
         return employeeService.getOneEmployeeById(id);
     }
 
-    @GetMapping("{name}")
+    @GetMapping("/name/{name}")
     public List<Employee> getEmployeesByName(@PathVariable("name") String name){
        return employeeService.findEmployeeByName(name);
     }
 
-    @GetMapping("{surname}")
+    @GetMapping("/surname/{surname}")
     public List<Employee> getEmployeesBySurname(@PathVariable("surname") String surname){
         return employeeService.findEmployeeBySurname(surname);
     }
@@ -61,12 +61,12 @@ public class EmployeeController {
         return employeeService.findEmployeeByDepartment(department);
     }*/
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Employee updateEmployeeById(@PathVariable("id") Long id, @RequestBody Employee employeeForm) {
         return employeeService.updateEmployeeById(id, employeeForm);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteEmployeeById(@PathVariable("id") Long id) {
         employeeService.deleteEmployeeById(id);
     }

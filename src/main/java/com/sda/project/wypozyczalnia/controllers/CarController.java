@@ -31,22 +31,22 @@ public class CarController {
         return carService.getAllCars();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Car getOneCarById(@PathVariable("id") Long id) {
         return carService.getOneCarById(id);
     }
 
-    @GetMapping("/{brand}")
+    @GetMapping("/brand/{brand}")
     public List<Car> getCarsByBrand(@PathVariable("brand") String brand){
         return carService.findByBrand(brand);
     }
 
-    @GetMapping("/{model}")
+    @GetMapping("/model/{model}")
     public List<Car> getCarsByModel(@PathVariable("model") String model){
         return carService.findByModel(model);
     }
 
-    @GetMapping("/{engine}")
+    @GetMapping("/engine/{engine}")
     public List<Car> getCarsByEngine(@PathVariable("engine") double engine){
         return carService.findByEngine(engine);
     }

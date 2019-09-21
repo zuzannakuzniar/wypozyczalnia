@@ -29,12 +29,12 @@ public class EquipmentController {
         return equipmentService.getAllEquipments();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Equipment getEquipmentById(@PathVariable("id") Long id) {
         return equipmentService.getEquipmentById(id);
     }
 
-    @GetMapping("{description}")
+    @GetMapping("/description/{description}")
     public List<Equipment>  getEquipmentsByDescription(@PathVariable("description") String description){
        return equipmentService.getEquipmentByDescription(description);
     }
