@@ -23,6 +23,9 @@ public class Car {
     @OneToOne
     private Equipment equipment;
 
+    @ManyToOne
+    private Reservation reservation;
+
     public Equipment getEquipment() {
         return equipment;
     }

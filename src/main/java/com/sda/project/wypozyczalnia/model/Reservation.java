@@ -2,6 +2,7 @@ package com.sda.project.wypozyczalnia.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 
 @Entity
@@ -27,7 +28,8 @@ public class Reservation {
    /* @ManyToOne
     private User user;*/
 
-    private String car;
+   @OneToMany
+    private List<Car> cars;
     private String startReservation;
     private String endReservation;
     private String departmentRent;
@@ -120,8 +122,7 @@ public class Reservation {
         return "Reservation{" +
                 "id=" + id +
                 ", date=" + date +
-                /*", user=" + user +*/
-                ", car='" + car + '\'' +
+                ", cars=" + cars +
                 ", startReservation='" + startReservation + '\'' +
                 ", endReservation='" + endReservation + '\'' +
                 ", departmentRent='" + departmentRent + '\'' +
