@@ -1,4 +1,5 @@
-# Serwis do prowadzenia wypożyczalni samochodów
+# Serwis do prowadzenia wypożyczalni samochodów 
+Ilość moich commitów w tym projekcie jest mała, ponieważ rzadziej je robiłam.
 
 ## Changelog v1.0
 ##### 10.09.2019
